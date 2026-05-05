@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)file:///C:/Users/gerar/Downloads/plea_petition_1.html -->
+<!-- saved from url=(0054)file:///C:/Users/gerar/Downloads/plea_petition_11.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plea Petition Generator — Gerald Miller P.A.</title>
-<link href="./Plea Petition Gen_files/css2" rel="stylesheet">
+<link href="./Plea Petition Generator — Gerald Miller P.A._files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -103,7 +103,8 @@ textarea{resize:vertical;line-height:1.55}
 .drv-link:hover{text-decoration:underline}
 
 /* ── Petition document ── */
-.petition{background:#fff;border:1px solid var(--border);border-radius:12px;padding:2.5rem 3rem;font-family:'Merriweather',Georgia,serif;font-size:13px;line-height:1.9;color:#111;max-height:76vh;overflow-y:auto}
+.petition{background:#fff;border:1px solid var(--border);border-radius:12px;padding:2.5rem 3rem;font-family:'Merriweather',Georgia,serif;font-size:13px;line-height:1.9;color:#111;max-height:76vh;overflow-y:auto;outline:none}
+.petition:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
 .p-hdr{display:flex;justify-content:space-between;font-weight:700;margin-bottom:3px}
 .p-cap{display:flex;gap:3rem;margin:10px 0}
 .p-cap-l,.p-cap-r{flex:1}
@@ -134,14 +135,14 @@ textarea{resize:vertical;line-height:1.55}
 <div class="app">
 
 <!-- ═══ FORM VIEW ═══ -->
-<div id="fv">
+<div id="fv" style="display: block;">
 
   <div style="text-align:center;padding:.5rem 0 .75rem">
     <span style="font-size:22px;font-weight:700;color:var(--navy);letter-spacing:-.01em">Plea Petition Generator</span>
   </div>
 
   <div class="hdr">
-    <div><div class="hdr-eye">Gerald Miller P.A.</div><div class="hdr-title">Gerard W. Mannion</div></div>
+    <div><div class="hdr-eye">Gerald Miller P.A.</div><div class="hdr-title">Plea Petition Generator</div></div>
     <button class="btn btn-gold" onclick="showPreview()">Preview petition →</button>
   </div>
 
@@ -159,6 +160,16 @@ textarea{resize:vertical;line-height:1.55}
   <div class="card">
     <div class="sec-hdr">Court &amp; case information</div>
     <div class="row">
+      <div style="flex:0 0 auto">
+        <label>Attorney</label>
+        <select id="s-atty" onchange="S.attorney=this.value" style="width:auto;min-width:100px">
+          <option value="GWM">GWM</option>
+          <option value="ANB">ANB</option>
+          <option value="KJD">KJD</option>
+          <option value="BDH">BDH</option>
+          <option value="GAM">GAM</option>
+        </select>
+      </div>
       <div class="f1">
         <label>County</label>
         <select id="s-county" onchange="onCounty()"><option value="">Select county...</option><option value="Aitkin">Aitkin</option><option value="Anoka">Anoka</option><option value="Becker">Becker</option><option value="Beltrami">Beltrami</option><option value="Benton">Benton</option><option value="Big Stone">Big Stone</option><option value="Blue Earth">Blue Earth</option><option value="Brown">Brown</option><option value="Carlton">Carlton</option><option value="Carver">Carver</option><option value="Cass">Cass</option><option value="Chippewa">Chippewa</option><option value="Chisago">Chisago</option><option value="Clay">Clay</option><option value="Clearwater">Clearwater</option><option value="Cook">Cook</option><option value="Cottonwood">Cottonwood</option><option value="Crow Wing">Crow Wing</option><option value="Dakota">Dakota</option><option value="Dodge">Dodge</option><option value="Douglas">Douglas</option><option value="Faribault">Faribault</option><option value="Fillmore">Fillmore</option><option value="Freeborn">Freeborn</option><option value="Goodhue">Goodhue</option><option value="Grant">Grant</option><option value="Hennepin">Hennepin</option><option value="Houston">Houston</option><option value="Hubbard">Hubbard</option><option value="Isanti">Isanti</option><option value="Itasca">Itasca</option><option value="Jackson">Jackson</option><option value="Kanabec">Kanabec</option><option value="Kandiyohi">Kandiyohi</option><option value="Kittson">Kittson</option><option value="Koochiching">Koochiching</option><option value="Lac qui Parle">Lac qui Parle</option><option value="Lake">Lake</option><option value="Lake of the Woods">Lake of the Woods</option><option value="Le Sueur">Le Sueur</option><option value="Lincoln">Lincoln</option><option value="Lyon">Lyon</option><option value="Mahnomen">Mahnomen</option><option value="Marshall">Marshall</option><option value="Martin">Martin</option><option value="McLeod">McLeod</option><option value="Meeker">Meeker</option><option value="Mille Lacs">Mille Lacs</option><option value="Morrison">Morrison</option><option value="Mower">Mower</option><option value="Murray">Murray</option><option value="Nicollet">Nicollet</option><option value="Nobles">Nobles</option><option value="Norman">Norman</option><option value="Olmsted">Olmsted</option><option value="Otter Tail">Otter Tail</option><option value="Pennington">Pennington</option><option value="Pine">Pine</option><option value="Pipestone">Pipestone</option><option value="Polk">Polk</option><option value="Pope">Pope</option><option value="Ramsey">Ramsey</option><option value="Red Lake">Red Lake</option><option value="Redwood">Redwood</option><option value="Renville">Renville</option><option value="Rice">Rice</option><option value="Rock">Rock</option><option value="Roseau">Roseau</option><option value="Scott">Scott</option><option value="Sherburne">Sherburne</option><option value="Sibley">Sibley</option><option value="St. Louis">St. Louis</option><option value="Stearns">Stearns</option><option value="Steele">Steele</option><option value="Stevens">Stevens</option><option value="Swift">Swift</option><option value="Todd">Todd</option><option value="Traverse">Traverse</option><option value="Wabasha">Wabasha</option><option value="Wadena">Wadena</option><option value="Waseca">Waseca</option><option value="Washington">Washington</option><option value="Watonwan">Watonwan</option><option value="Wilkin">Wilkin</option><option value="Winona">Winona</option><option value="Wright">Wright</option><option value="Yellow Medicine">Yellow Medicine</option></select>
@@ -285,19 +296,19 @@ textarea{resize:vertical;line-height:1.55}
     <div class="row">
       <div class="f1"><label>Charge level</label>
         <select onchange="changeLevel(this.value)">
-          <option>Misdemeanor</option><option>Gross Misdemeanor</option><option selected="">Felony</option>
+          <option selected="">Misdemeanor</option><option>Gross Misdemeanor</option><option>Felony</option>
         </select>
       </div>
-      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="" oninput="S.maxFine=this.value" placeholder="$1,000"></div>
-      <div class="f1"><label>Maximum incarceration</label><input id="f-jail" value="" oninput="S.maxJail=this.value" placeholder="90"></div>
+      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="$1,000" oninput="S.maxFine=this.value" placeholder="$1,000"></div>
+      <div class="f1"><label>Maximum incarceration</label><input id="f-jail" value="90" oninput="S.maxJail=this.value" placeholder="90"></div>
       <div class="f1"><label>Unit</label>
         <select onchange="S.jailUnit=this.value">
-          <option>days in jail</option>
-          <option selected="">years in prison</option>
+          <option selected="">days in jail</option>
+          <option>years in prison</option>
         </select>
       </div>
     </div>
-    
+    <div class="notice notice-ok">Auto-filled: Misdemeanor — $1,000 max fine / 90 days in jail</div>
   </div>
 
   <div class="card">
@@ -311,15 +322,65 @@ textarea{resize:vertical;line-height:1.55}
 </div>
 
 <!-- ═══ PREVIEW VIEW ═══ -->
-<div id="pv">
+<div id="pv" style="display: none;">
   <div class="pv-bar">
     <button class="btn" onclick="showForm()">← Back to form</button>
     <button class="btn btn-navy" id="btn-drv" onclick="pushDrive()">Push to Google Drive</button>
     <button class="btn" id="btn-cpy" onclick="copyTxt()">Copy to clipboard</button>
     <button class="btn" onclick="window.print()">🖨 Print</button>
+    <span style="font-size:12px;color:var(--muted);margin-left:4px">✏️ Click petition to edit</span>
     <span id="drv-status"></span>
   </div>
-  <div class="petition" id="petition-doc"></div>
+  <div class="petition" id="petition-doc" contenteditable="true" spellcheck="true">
+<div class="p-hdr"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
+<div class="p-hdr"><span>COUNTY OF <span class="p-ph">[COUNTY]</span></span><span><span class="p-ph">[DISTRICT] JUDICIAL DISTRICT</span></span></div>
+<hr class="p-rule">
+<div class="p-cap">
+  <div class="p-cap-l">
+    <div>State of Minnesota,</div>
+    <div style="padding-left:2.5rem">Plaintiff,</div>
+    <div style="margin:6px 0">vs.</div>
+    <div style="font-weight:700"><span class="p-ph">[CLIENT NAME]</span></div>
+    <div style="padding-left:2.5rem">Defendant.</div>
+  </div>
+  <div class="p-cap-r">
+    <div style="white-space:nowrap">Case No. <span class="p-ph">[CASE NO]</span></div>
+    <div style="margin-top:10px;font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</div>
+  </div>
+</div>
+<hr class="p-rule">
+
+<div class="p-para"><strong>1.</strong> I, <strong><span class="p-ph">[CLIENT NAME]</span></strong>, DOB <strong><span class="p-ph">[DOB]</span></strong>, have reviewed the charges against me, and I understand them:<div class="p-chg"><strong>Count 1:</strong> .</div></div>
+<div class="p-para"><strong>2.</strong> I am pleading guilty to:<div class="p-ind" style="margin-top:6px"><span class="p-ph">[Select plea counts in form]</span></div></div>
+<div class="p-para"><strong>3.</strong> I am pleading guilty to <span class="p-ph">[COUNT]</span> because of the following: <span class="p-ph">[Enter facts in form]</span></div>
+<div class="p-para"><strong>4.</strong> I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</div>
+<div class="p-para"><strong>5.</strong> I understand that I was charged with a <strong>Misdemeanor</strong>, which carries a maximum sentence of a <strong>$1,000</strong> fine and/or <strong>90 days in jail.</strong></div>
+<div class="p-para"><strong>6.</strong> I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>Gerald Miller</strong>.</div>
+<div class="p-para"><strong>7.</strong> I understand that (under the original <strong>Misdemeanor</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:
+  <div class="p-ind" style="margin-top:4px">a. the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;</div><div class="p-ind" style="margin-top:4px">b. the right to confront and cross-examine all witnesses against me;</div><div class="p-ind" style="margin-top:4px">c. the right to remain silent or to testify for myself;</div><div class="p-ind" style="margin-top:4px">d. the right to subpoena witnesses to appear on my behalf;</div><div class="p-ind" style="margin-top:4px">e. the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.</div>
+</div>
+<div class="p-para"><strong>8.</strong> Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</div>
+<div class="p-para"><strong>9.</strong> I am entering my plea of guilty based on the following sentencing agreement:
+  <div class="p-ind" style="margin-top:8px;font-style:italic;font-weight:700;text-decoration:underline">
+    <span style="color:#9CA3AF;text-decoration:none;font-weight:400;font-style:normal"><span class="p-ph">[Enter sentencing agreement in form]</span></span>
+  </div>
+</div>
+<div class="p-para"><strong>10.</strong> I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</div>
+<div class="p-para"><strong>11.</strong> Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</div>
+<div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Defendant</div></div><div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Date</div></div>
+<div style="margin-top:1.5rem;font-size:12px;line-height:1.7">Gerald Miller states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
+<div class="p-sg" style="margin-top:1.5rem;align-items:start">
+  <div><div class="p-sl" style="width:190px"></div><div style="font-size:12px;line-height:1.7"><strong>Gerald Miller</strong><br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax</div></div>
+  <div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Date</div></div>
+</div>
+<div class="p-sg" style="margin-top:1.5rem">
+  <div><div class="p-sl" style="width:190px"></div><div style="font-size:12px">Prosecuting Attorney</div></div>
+  <div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Date</div></div>
+</div>
+<div class="p-sg" style="margin-top:1.5rem">
+  <div><div class="p-sl" style="width:190px"></div><div style="font-size:12px">Judge of District Court</div></div>
+  <div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Date</div></div>
+</div></div>
 </div>
 
 </div><!-- .app -->
@@ -373,6 +434,14 @@ const RSC={
   '4th':{desc:'Fourth Degree Driving While Impaired',statute:'169A.27 subd. 1'}
 };
 
+const ATTORNEYS={
+  'GWM':{name:'Gerard W. Mannion', bar:'#404006', email:'gmannion@geraldmiller.com'},
+  'ANB':{name:'Annaliese Barnes',   bar:'',        email:''},
+  'KJD':{name:'Kyle Dreger',        bar:'',        email:''},
+  'BDH':{name:'Brodie Hacken',      bar:'',        email:''},
+  'GAM':{name:'Gerald Miller',       bar:'',        email:''},
+};
+
 const PENALTIES={
   'Misdemeanor':      {jail:'90',  fine:'$1,000',unit:'days in jail'},
   'Gross Misdemeanor':{jail:'364', fine:'$3,000',unit:'days in jail'},
@@ -392,6 +461,7 @@ const RIGHTS=[
 ═══════════════════════════════════════════════════════ */
 const S={
   type:'dwi',
+  attorney:'GWM',
   clientName:'',county:'',caseNumber:'',clientDob:'',
   charges:[{id:1,desc:'',statute:'',ref:'',ct:null,rd:null,rscDeg:'4th'}],
   pleaSel:[],
@@ -412,6 +482,23 @@ const $=id=>document.getElementById(id);
 const esc=s=>s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';
 const ph=s=>`<span class="p-ph">${s}</span>`;
 const sl=(w='200px')=>`<div class="p-sl" style="width:${w}"></div>`;
+
+function getAtty(){return ATTORNEYS[S.attorney]||ATTORNEYS['GWM'];}
+function attyName(){const a=getAtty();return a.name||S.attorney;}
+function attySigBlock(){
+  const a=getAtty();
+  const nameBar=a.bar?`<strong>${a.name}</strong> (${a.bar})`:`<strong>${a.name||S.attorney}</strong>`;
+  let lines=`${nameBar}<br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax`;
+  if(a.email)lines+=`<br>${a.email}`;
+  return lines;
+}
+function attySigTxt(){
+  const a=getAtty();
+  const nameBar=a.bar?`${a.name} (${a.bar})`:(a.name||S.attorney);
+  let lines=[nameBar,'Gerald Miller, P.A.','2915 Wayzata Boulevard South','Minneapolis, MN 55405','(612) 341-9080 Phone','(612) 341-9079 Fax'];
+  if(a.email)lines.push(a.email);
+  return lines.join('\n');
+}
 
 function fmtDob(s){if(!s)return'';const[y,m,d]=s.split('-');return`${m}/${d}/${y}`}
 function fmtLong(s){
@@ -832,6 +919,7 @@ function autoFacts(){
 ═══════════════════════════════════════════════════════ */
 function syncFields(){
   const g=(id,k)=>{const e=$(id);if(e)S[k]=e.value};
+  g('s-atty','attorney');
   g('s-name','clientName');g('s-dob','clientDob');g('s-caseno','caseNumber');g('s-county','county');
   g('f-od','offDate');g('f-oc','offCity');g('f-oco','offCounty');g('f-facts','facts');
   g('f-fine','maxFine');g('f-jail','maxJail');g('f-sent','sentencing');
@@ -887,7 +975,7 @@ function buildPmPV(){
   <div style="padding-top:1.5rem">${sl('220px')}<div>Defendant</div></div>
 
   <div></div>
-  <div style="padding-top:1.5rem">${sl('220px')}<div>Gerard W. Mannion, Attorney for Defendant</div></div>
+  <div style="padding-top:1.5rem">${sl('220px')}<div>${attyName()}, Attorney for Defendant</div></div>
 
   <div style="padding-top:1.5rem;font-size:13px;display:flex;align-items:flex-end">
     Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}
@@ -989,7 +1077,7 @@ function buildMainPV(){
 <div class="p-para">${para3}</div>
 <div class="p-para"><strong>4.</strong>&ensp;I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</div>
 <div class="p-para"><strong>5.</strong>&ensp;I understand that I was charged with a <strong>${S.level}</strong>, which carries a maximum sentence of a <strong>${S.maxFine}</strong> fine and/or <strong>${inc}.</strong></div>
-<div class="p-para"><strong>6.</strong>&ensp;I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>Gerard W. Mannion</strong>.</div>
+<div class="p-para"><strong>6.</strong>&ensp;I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>${attyName()}</strong>.</div>
 <div class="p-para"><strong>7.</strong>&ensp;I understand that (under the original <strong>${S.level}</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:
   ${RIGHTS.map((r,i)=>`<div class="p-ind" style="margin-top:4px">${String.fromCharCode(97+i)}. ${r}</div>`).join('')}
 </div>
@@ -1002,9 +1090,9 @@ function buildMainPV(){
 <div class="p-para"><strong>10.</strong>&ensp;I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</div>
 ${p11}
 ${sigBlock}
-<div style="margin-top:1.5rem;font-size:12px;line-height:1.7">Gerard W. Mannion states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
+<div style="margin-top:1.5rem;font-size:12px;line-height:1.7">${attyName()} states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
 <div class="p-sg" style="margin-top:1.5rem;align-items:start">
-  <div>${sl('190px')}<div style="font-size:12px;line-height:1.7"><strong>Gerard W. Mannion</strong> (#404006)<br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax<br>gmannion@geraldmiller.com</div></div>
+  <div>${sl('190px')}<div style="font-size:12px;line-height:1.7">${attySigBlock()}</div></div>
   <div>${sl()}<div style="font-size:12px">Date</div></div>
 </div>
 <div class="p-sg" style="margin-top:1.5rem">
@@ -1034,7 +1122,7 @@ function buildTxt(){
       `The State of Minnesota agrees to a stay of adjudication on the petty misdemeanor charge in the above-entitled matter, subject to the Court's approval. The following conditions shall apply:`,``,
       `\t1. TERMS`,``,`\t${S.terms||'[TERMS]'}`,``,
       `________________________________\t\t________________________________`,`Prosecutor\t\t\t\t\tDefendant`,``,
-      `\t\t\t\t\t\t________________________________`,`\t\t\t\t\t\tGerard W. Mannion, Attorney for Defendant`,``,
+      `\t\t\t\t\t\t________________________________`,`\t\t\t\t\t\t${attyName()}, Attorney for Defendant`,``,
       `Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}\t\t________________________________`,`\t\t\t\t\t\tJudge of District Court`
     ].join('\n');
   }
@@ -1080,7 +1168,7 @@ function buildTxt(){
   else{const od=S.offDate?fmtShort(S.offDate):'[DATE]';L.push(`3.\tI am pleading guilty to ${pleaLbls||'[COUNT]'} because on or about ${od}, within the city of ${S.offCity||'[CITY]'}, ${S.offCounty||'[COUNTY]'} County, State of Minnesota, I did the following:`,``,`\t${S.facts||'[FACTS]'}`)}
   L.push(``,`4.\tI make no claim that I am innocent of the charge to which I am entering a plea of guilty.`,``);
   L.push(`5.\tI understand that I was charged with a ${S.level}, which carries a maximum sentence of a ${S.maxFine} fine and/or ${inc}.`,``);
-  L.push(`6.\tI have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, Gerard W. Mannion.`,``);
+  L.push(`6.\tI have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, ${attyName()}.`,``);
   L.push(`7.\tI understand that (under the original ${S.level} charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:`);
   L.push(`\ta. the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;`,`\tb. the right to confront and cross-examine all witnesses against me;`,`\tc. the right to remain silent or to testify for myself;`,`\td. the right to subpoena witnesses to appear on my behalf;`,`\te. the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.`);
   L.push(``,`8.\tUnderstanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.`,``);
@@ -1089,8 +1177,8 @@ function buildTxt(){
   if(isDwi)L.push(``,`11.\tFurther, I also understand THE ENHANCEABILITY of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.`);
   if(isDwi)L.push(``,`____________________________`,`Defendant`,``,`____________________________`,`Date`);
   else L.push(``,`____________________________\t\t\t\t____________________________`,`Defendant\t\t\t\t\t\tDate`);
-  L.push(``,`Gerard W. Mannion states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty`,``);
-  L.push(`________________________________`,`Gerard W. Mannion (#404006)\t\t\t\tDate`,`Gerald Miller, P.A.`,`2915 Wayzata Boulevard South`,`Minneapolis, MN 55405`,`(612) 341-9080 Phone`,`(612) 341-9079 Fax`,`gmannion@geraldmiller.com`);
+  L.push(``,`${attyName()} states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty`,``);
+  L.push(`________________________________`,attySigTxt());
   L.push(``,`________________________________\t\t\t\t____________________________`,`Prosecuting Attorney\t\t\t\t\tDate`);
   L.push(``,`________________________________\t\t\t\t____________________________`,`Judge of District Court\t\t\t\t\tDate`);
   return L.join('\n');
