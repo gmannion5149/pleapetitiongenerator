@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)file:///C:/Users/gerar/Downloads/plea_petition.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plea Petition Generator — Gerald Miller P.A.</title>
+<link href="./Plea Petition Generator — Gerald Miller P.A._files/css2" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D1424;--gold:#D4AF37;--bg:#F0F2F5;--card:#fff;
+  --inner:#F7F8FA;--border:#DDE0E8;--text:#111827;--muted:#6B7280;
+  --blue:#2563EB;--blue-bg:#EFF6FF;--blue-bd:#BFDBFE;
+  --green-bg:#F0FDF4;--green-bd:#86EFAC;--green-tx:#15803D;
+  --red:#DC2626;--red-bg:#FEF2F2;--red-bd:#FCA5A5;
+  --purple:#5B4CF5;--purple-bg:#EEF2FF;--purple-bd:#C7D2FE;
+}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
+.app{max-width:880px;margin:0 auto;padding:1rem 1rem 3rem}
+
+/* ── Header ── */
+.hdr{background:var(--navy);border-radius:12px;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.hdr-eye{font-size:10px;letter-spacing:.13em;color:var(--gold);font-weight:600;text-transform:uppercase;margin-bottom:2px}
+.hdr-title{font-size:17px;font-weight:500;color:#fff}
+
+/* ── Buttons ── */
+.btn{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;border:1px solid var(--border);background:#fff;color:var(--text);transition:.12s}
+.btn:hover{background:#f3f4f6}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-navy:hover{background:#1b2b47}
+.btn-gold{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:600}
+.btn-gold:hover{background:#c9a227;border-color:#c9a227}
+.btn-sm{padding:4px 10px;font-size:11px;border-radius:6px}
+.btn-danger{color:var(--red);border-color:var(--red-bd);background:#fff}
+.btn-danger:hover{background:var(--red-bg)}
+
+/* ── Cards ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:.875rem}
+.sec-hdr{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center}
+
+/* ── Form ── */
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+input,select,textarea{width:100%;padding:7px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;color:var(--text);font-family:inherit;background:#fff;outline:none;transition:border-color .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--blue)}
+input[readonly]{background:#f9fafb;color:var(--muted);cursor:default}
+textarea{resize:vertical;line-height:1.55}
+.row{display:flex;gap:10px;margin-bottom:10px}
+.f1{flex:1;min-width:0}.f2{flex:2;min-width:0}.f3{flex:3;min-width:0}
+
+/* ── Tabs ── */
+.tabs{display:flex;gap:6px}
+.tab{padding:7px 16px;border-radius:8px;font-size:13px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text);font-family:inherit}
+.tab:hover:not(.tab-on){background:#f3f4f6}
+.tab-on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:500}
+
+/* ── Charge cards ── */
+.chg-card{background:var(--inner);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:10px}
+.chg-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.chg-lbl{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* ── Quick-select pills ── */
+.qrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.qrow-lbl{font-size:11px;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.qbtn{padding:5px 14px;border-radius:20px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.1s}
+.qbtn:hover{border-color:var(--navy);color:var(--navy)}
+.qbtn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.dbtn{padding:3px 11px;border-radius:20px;border:1.5px solid var(--border);background:#fff;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.1s}
+.dbtn:hover{border-color:var(--purple);color:var(--purple)}
+.dbtn.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+.dbtn-none:hover{border-color:var(--muted);color:var(--muted)}
+.dbtn-none.on{background:var(--muted);color:#fff;border-color:var(--muted)}
+
+/* ── Special counts ── */
+.sp-section{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
+.sp-section-lbl{font-size:10px;color:#9CA3AF;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.sp-row{display:flex;align-items:flex-start;gap:10px;padding:10px;border-radius:8px;margin-bottom:6px}
+.sp-off{background:#f9fafb;border:1px dashed var(--border)}
+.sp-on{background:var(--blue-bg);border:1px solid var(--blue-bd)}
+.sp-cb{width:16px;height:16px;cursor:pointer;flex-shrink:0;margin-top:2px;accent-color:var(--navy)}
+.sp-body{flex:1}
+.sp-name{font-size:13px;font-weight:500}
+.sp-desc{font-size:12px;color:var(--muted);font-style:italic;margin-top:3px;line-height:1.5}
+.sp-degs{display:flex;align-items:center;gap:5px;margin-top:8px}
+
+/* ── Plea selector ── */
+.plea-row{display:flex;align-items:flex-start;gap:10px;padding:10px;border-radius:8px;margin-bottom:6px;cursor:pointer}
+.plea-off{background:#f9fafb;border:1.5px solid var(--border)}
+.plea-on{background:var(--blue-bg);border:1.5px solid var(--blue-bd)}
+.plea-cb{width:16px;height:16px;cursor:pointer;flex-shrink:0;margin-top:2px;accent-color:var(--navy)}
+.plea-txt{font-size:13px;line-height:1.55}
+.badge{font-size:10px;background:#e5e7eb;border-radius:4px;padding:1px 6px;color:var(--muted);margin-left:5px;font-weight:500}
+
+/* ── Notice ── */
+.notice{font-size:12px;padding:8px 12px;border-radius:6px;margin-top:8px}
+.notice-ok{color:var(--green-tx);background:var(--green-bg);border:1px solid var(--green-bd)}
+
+/* ── Preview ── */
+#pv{display:none}
+.pv-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:1.25rem}
+.stat-ok{font-size:13px;color:var(--green-tx)}
+.stat-err{font-size:13px;color:var(--red)}
+.drv-link{font-size:13px;color:var(--blue);text-decoration:none}
+.drv-link:hover{text-decoration:underline}
+
+/* ── Petition document ── */
+.petition{background:#fff;border:1px solid var(--border);border-radius:12px;padding:2.5rem 3rem;font-family:'Merriweather',Georgia,serif;font-size:13px;line-height:1.9;color:#111;max-height:76vh;overflow-y:auto}
+.p-hdr{display:flex;justify-content:space-between;font-weight:700;margin-bottom:3px}
+.p-cap{display:flex;gap:3rem;margin:10px 0}
+.p-cap-l,.p-cap-r{flex:1}
+.p-rule{border:none;border-top:1px solid #111;margin:10px 0}
+.p-dbl{border-top:3px double #111;margin:8px 0 14px}
+.p-para{margin-bottom:14px}
+.p-ind{padding-left:2.5rem}
+.p-chg{padding-left:2.5rem;margin-top:6px;font-style:italic;font-weight:400}
+.p-chg strong{font-style:normal;font-weight:700}
+.p-sl{border-bottom:1px solid #111;margin-bottom:4px;margin-top:1.5rem}
+.p-sg{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.5rem}
+.p-ph{color:#9CA3AF;font-style:italic;font-family:'Inter',sans-serif;font-size:12px;font-weight:400}
+
+@media print{
+  .pv-bar,.hdr,#fv{display:none!important}
+  .app{max-width:100%;padding:0}
+  .petition{max-height:none;border:none;border-radius:0;padding:1.5rem 2rem;overflow:visible}
+  body{background:#fff}
+}
+@media(max-width:600px){
+  .petition{padding:1.5rem;font-size:12px}
+  .p-cap{flex-direction:column}
+  .p-sg{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ═══ FORM VIEW ═══ -->
+<div id="fv">
+
+  <div style="text-align:center;padding:.5rem 0 .75rem">
+    <span style="font-size:22px;font-weight:700;color:var(--navy);letter-spacing:-.01em">Plea Petition Generator</span>
+  </div>
+
+  <div class="hdr">
+    <div><div class="hdr-eye">Gerald Miller P.A.</div><div class="hdr-title">Gerard W. Mannion</div></div>
+    <button class="btn btn-gold" onclick="showPreview()">Preview petition →</button>
+  </div>
+
+  <!-- Type selector -->
+  <div class="card">
+    <div class="sec-hdr">Petition type</div>
+    <select id="type-select" onchange="setType(this.value)" style="width:auto;min-width:240px;font-size:14px;padding:9px 12px">
+      <option value="dwi">DWI Plea Petition</option>
+      <option value="standard">Standard Plea Petition</option>
+      <option value="pm">Petty Plea Petition</option>
+    </select>
+  </div>
+
+  <!-- Shared court + client info -->
+  <div class="card">
+    <div class="sec-hdr">Court &amp; case information</div>
+    <div class="row">
+      <div class="f1">
+        <label>County</label>
+        <select id="s-county" onchange="onCounty()"><option value="">Select county...</option><option value="Aitkin">Aitkin</option><option value="Anoka">Anoka</option><option value="Becker">Becker</option><option value="Beltrami">Beltrami</option><option value="Benton">Benton</option><option value="Big Stone">Big Stone</option><option value="Blue Earth">Blue Earth</option><option value="Brown">Brown</option><option value="Carlton">Carlton</option><option value="Carver">Carver</option><option value="Cass">Cass</option><option value="Chippewa">Chippewa</option><option value="Chisago">Chisago</option><option value="Clay">Clay</option><option value="Clearwater">Clearwater</option><option value="Cook">Cook</option><option value="Cottonwood">Cottonwood</option><option value="Crow Wing">Crow Wing</option><option value="Dakota">Dakota</option><option value="Dodge">Dodge</option><option value="Douglas">Douglas</option><option value="Faribault">Faribault</option><option value="Fillmore">Fillmore</option><option value="Freeborn">Freeborn</option><option value="Goodhue">Goodhue</option><option value="Grant">Grant</option><option value="Hennepin">Hennepin</option><option value="Houston">Houston</option><option value="Hubbard">Hubbard</option><option value="Isanti">Isanti</option><option value="Itasca">Itasca</option><option value="Jackson">Jackson</option><option value="Kanabec">Kanabec</option><option value="Kandiyohi">Kandiyohi</option><option value="Kittson">Kittson</option><option value="Koochiching">Koochiching</option><option value="Lac qui Parle">Lac qui Parle</option><option value="Lake">Lake</option><option value="Lake of the Woods">Lake of the Woods</option><option value="Le Sueur">Le Sueur</option><option value="Lincoln">Lincoln</option><option value="Lyon">Lyon</option><option value="Mahnomen">Mahnomen</option><option value="Marshall">Marshall</option><option value="Martin">Martin</option><option value="McLeod">McLeod</option><option value="Meeker">Meeker</option><option value="Mille Lacs">Mille Lacs</option><option value="Morrison">Morrison</option><option value="Mower">Mower</option><option value="Murray">Murray</option><option value="Nicollet">Nicollet</option><option value="Nobles">Nobles</option><option value="Norman">Norman</option><option value="Olmsted">Olmsted</option><option value="Otter Tail">Otter Tail</option><option value="Pennington">Pennington</option><option value="Pine">Pine</option><option value="Pipestone">Pipestone</option><option value="Polk">Polk</option><option value="Pope">Pope</option><option value="Ramsey">Ramsey</option><option value="Red Lake">Red Lake</option><option value="Redwood">Redwood</option><option value="Renville">Renville</option><option value="Rice">Rice</option><option value="Rock">Rock</option><option value="Roseau">Roseau</option><option value="Scott">Scott</option><option value="Sherburne">Sherburne</option><option value="Sibley">Sibley</option><option value="St. Louis">St. Louis</option><option value="Stearns">Stearns</option><option value="Steele">Steele</option><option value="Stevens">Stevens</option><option value="Swift">Swift</option><option value="Todd">Todd</option><option value="Traverse">Traverse</option><option value="Wabasha">Wabasha</option><option value="Wadena">Wadena</option><option value="Waseca">Waseca</option><option value="Washington">Washington</option><option value="Watonwan">Watonwan</option><option value="Wilkin">Wilkin</option><option value="Winona">Winona</option><option value="Wright">Wright</option><option value="Yellow Medicine">Yellow Medicine</option></select>
+      </div>
+      <div class="f1">
+        <label>Judicial district</label>
+        <input id="s-district" readonly="" placeholder="Auto-populated from county">
+      </div>
+    </div>
+    <div class="row">
+      <div class="f2">
+        <label>Client name</label>
+        <input id="s-name" oninput="S.clientName=this.value" placeholder="Full legal name">
+      </div>
+      <div class="f1" id="dob-wrap">
+        <label>Date of birth</label>
+        <input type="date" id="s-dob" oninput="S.clientDob=this.value">
+      </div>
+      <div class="f1">
+        <label id="lbl-cn">Case number</label>
+        <input id="s-caseno" oninput="S.caseNumber=this.value" placeholder="27-CR-25-00000">
+      </div>
+    </div>
+  </div>
+
+  <!-- Type-specific fields rendered here -->
+  <div id="tf">
+  <div class="card">
+    <div class="sec-hdr">Charges filed</div>
+    <div id="chg-sec"><div class="row" style="margin-bottom:12px;align-items:flex-end">
+    <div style="flex:0 0 auto">
+      <label>Number of counts</label>
+      <select onchange="setCountNum(+this.value)" style="width:auto;min-width:80px">
+        <option selected="">1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+      </select>
+    </div>
+  </div>
+<div class="chg-card" id="cc-1">
+  <div class="chg-hdr">
+    <span class="chg-lbl">Count 1</span>
+  </div>
+
+  <div class="row" style="margin-bottom:4px">
+    <div class="f2">
+      <label>Charge</label>
+      <select onchange="setChgType(1,this.value)">
+        <option value="">— Select charge —</option>
+        <optgroup label="Alcohol">
+          <option value=".08">.08 or More</option>
+          <option value="UI">Under the Influence</option>
+          <option value="R">Refusal</option>
+        </optgroup>
+        <optgroup label="Controlled Substances">
+          <option value="cs-imp">Controlled Substance (Impaired)</option>
+          <option value="intox">Intoxicating Substance</option>
+          <option value="cs-cont">Controlled Substance (Contains)</option>
+          <option value="cannabis">Cannabis</option>
+        </optgroup>
+        <optgroup label="Other">
+          <option value="ref">Reference Statute</option>
+          <option value="careless">Careless Driving</option>
+          <option value="other">Other</option>
+        </optgroup>
+      </select>
+    </div>
+    
+    <div class="f1">
+      <label>With reference to</label>
+      <select onchange="setRefDeg(1,this.value)">
+        <option value="">— None —</option>
+        <option value="4th">4th Degree</option>
+        <option value="3rd">3rd Degree</option>
+        <option value="2nd">2nd Degree</option>
+        <option value="1st">1st Degree</option>
+      </select>
+    </div>
+  </div>
+
+  <div style="margin-bottom:8px">
+    <label>Description</label>
+    <textarea rows="2" oninput="updChg(1,&#39;desc&#39;,this.value)" placeholder="Auto-filled from charge selection above"></textarea>
+  </div>
+  <div class="row" style="margin-bottom:4px">
+    <div class="f1">
+      <label>Charge statute</label>
+      <input value="" oninput="updChg(1,&#39;statute&#39;,this.value)" placeholder="auto-filled">
+    </div>
+    
+    <div class="f1">
+      <label>Reference statute</label>
+      <input value="" oninput="updChg(1,&#39;ref&#39;,this.value)" placeholder="e.g., 169A.27 subd. 2">
+    </div>
+  </div>
+</div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-hdr">Plea — count(s) pleading guilty to</div>
+    <div id="plea-sec"><div style="margin-bottom:12px;padding:10px;border-radius:8px;background:#f9fafb;border:1.5px solid var(--border)"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <span style="font-size:12px;font-weight:500;color:var(--muted)">Careless Driving amendment:</span><button class="qbtn" onclick="clickCareless()">Careless Driving</button></div></div><div class="plea-row plea-off" onclick="togPlea(&#39;1&#39;)">
+      <input type="checkbox" class="plea-cb" onclick="event.stopPropagation();togPlea(&#39;1&#39;)">
+      <span class="plea-txt">
+        <strong>Count 1:</strong> (no description entered)<span style="color:var(--muted)"></span>
+      </span>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-hdr">Offense details &amp; factual basis</div>
+    <div class="row">
+      <div class="f1"><label>Date of offense</label><input type="date" id="f-od" value="" oninput="S.offDate=this.value"></div>
+      <div class="f1"><label>City of offense</label><input id="f-oc" value="" oninput="S.offCity=this.value" placeholder="Robbinsdale"></div>
+      <div class="f1"><label>County of offense</label><input id="f-oco" value="" oninput="S.offCounty=this.value" placeholder="Hennepin"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+      <label style="margin:0">Facts / factual basis</label>
+      <button class="btn btn-sm" onclick="autoFacts()">Auto-fill standard DWI facts</button>
+    </div>
+    <textarea id="f-facts" rows="5" oninput="S.facts=this.value" placeholder="Click Auto-fill or enter the factual basis for the plea."></textarea>
+  </div>
+
+  <div class="card">
+    <div class="sec-hdr">Charge level &amp; maximum penalties</div>
+    <div class="row">
+      <div class="f1"><label>Charge level</label>
+        <select onchange="changeLevel(this.value)">
+          <option selected="">Misdemeanor</option><option>Gross Misdemeanor</option><option>Felony</option>
+        </select>
+      </div>
+      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="$1,000" oninput="S.maxFine=this.value" placeholder="$1,000"></div>
+      <div class="f1"><label>Maximum incarceration</label><input id="f-jail" value="90" oninput="S.maxJail=this.value" placeholder="90"></div>
+      <div class="f1"><label>Unit</label>
+        <select onchange="S.jailUnit=this.value">
+          <option selected="">days in jail</option>
+          <option>years in prison</option>
+        </select>
+      </div>
+    </div>
+    <div class="notice notice-ok">Auto-filled: Misdemeanor — $1,000 max fine / 90 days in jail</div>
+  </div>
+
+  <div class="card">
+    <div class="sec-hdr">Sentencing agreement (paragraph 9)</div>
+    <textarea id="f-sent" rows="4" oninput="S.sentencing=this.value" placeholder="e.g., Plead Guilty to Count 2. 90 days in jail, with 89 days stayed for 2 years to Hennepin County Probation..."></textarea>
+  </div></div>
+
+  <div style="text-align:right;padding-bottom:2rem">
+    <button class="btn btn-gold" onclick="showPreview()">Preview petition →</button>
+  </div>
+</div>
+
+<!-- ═══ PREVIEW VIEW ═══ -->
+<div id="pv">
+  <div class="pv-bar">
+    <button class="btn" onclick="showForm()">← Back to form</button>
+    <button class="btn btn-navy" id="btn-drv" onclick="pushDrive()">Push to Google Drive</button>
+    <button class="btn" id="btn-cpy" onclick="copyTxt()">Copy to clipboard</button>
+    <button class="btn" onclick="window.print()">🖨 Print</button>
+    <span id="drv-status"></span>
+  </div>
+  <div class="petition" id="petition-doc"></div>
+</div>
+
+</div><!-- .app -->
+<script>
+/* ═══════════════════════════════════════════════════════
+   CONSTANTS
+═══════════════════════════════════════════════════════ */
+const CD={
+  'Aitkin':'9th','Anoka':'10th','Becker':'7th','Beltrami':'9th','Benton':'7th',
+  'Big Stone':'8th','Blue Earth':'5th','Brown':'5th','Carlton':'6th','Carver':'1st',
+  'Cass':'9th','Chippewa':'8th','Chisago':'10th','Clay':'7th','Clearwater':'9th',
+  'Cook':'6th','Cottonwood':'5th','Crow Wing':'9th','Dakota':'1st','Dodge':'3rd',
+  'Douglas':'7th','Faribault':'5th','Fillmore':'3rd','Freeborn':'3rd','Goodhue':'3rd',
+  'Grant':'7th','Hennepin':'4th','Houston':'3rd','Hubbard':'9th','Isanti':'10th',
+  'Itasca':'9th','Jackson':'5th','Kanabec':'10th','Kandiyohi':'8th','Kittson':'9th',
+  'Koochiching':'9th','Lac qui Parle':'8th','Lake':'6th','Lake of the Woods':'9th',
+  'Le Sueur':'1st','Lincoln':'5th','Lyon':'5th','Mahnomen':'9th','Marshall':'9th',
+  'Martin':'5th','McLeod':'1st','Meeker':'8th','Mille Lacs':'7th','Morrison':'7th',
+  'Mower':'3rd','Murray':'5th','Nicollet':'5th','Nobles':'5th','Norman':'9th',
+  'Olmsted':'3rd','Otter Tail':'7th','Pennington':'9th','Pine':'10th','Pipestone':'5th',
+  'Polk':'9th','Pope':'7th','Ramsey':'2nd','Red Lake':'9th','Redwood':'5th',
+  'Renville':'8th','Rice':'3rd','Rock':'5th','Roseau':'9th','Scott':'1st',
+  'Sherburne':'10th','Sibley':'1st','St. Louis':'6th','Stearns':'7th','Steele':'3rd',
+  'Stevens':'7th','Swift':'8th','Todd':'7th','Traverse':'7th','Wabasha':'3rd',
+  'Wadena':'7th','Waseca':'3rd','Washington':'10th','Watonwan':'5th','Wilkin':'7th',
+  'Winona':'3rd','Wright':'10th','Yellow Medicine':'8th'
+};
+const DN={'1st':'FIRST','2nd':'SECOND','3rd':'THIRD','4th':'FOURTH','5th':'FIFTH',
+  '6th':'SIXTH','7th':'SEVENTH','8th':'EIGHTH','9th':'NINTH','10th':'TENTH'};
+
+/* DWI charge type quick-select */
+const CT={
+  '.08'     :{desc:'Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving',statute:'169A.20 subd. 1(5)'},
+  'UI'      :{desc:'Operating a Motor Vehicle While Under the Influence of Alcohol',statute:'169A.20 subd. 1(1)'},
+  'R'       :{desc:'Driving While Impaired, Refuse or Fail to Submit to Chemical Test',statute:'169A.20 subd. 2(1)'},
+  'cs-imp'  :{desc:'Operating a Motor Vehicle while Under the Influence of a Controlled Substance',statute:'169A.20 subd. 1(2)'},
+  'intox'   :{desc:'Operating a Motor Vehicle while Under the Influence of an Intoxicating Substance',statute:'169A.20 subd. 1(3)'},
+  'cs-cont' :{desc:'Operating a Motor Vehicle with any amount of Schedule I or Schedule III Substance',statute:'169A.20 subd. 1(7)'},
+  'cannabis':{desc:'Operating a Motor Vehicle while Under the Influence of Cannabis, THC, or Cannabis Product',statute:'169A.20 subd. 1(8)'},
+  'careless':{desc:'Careless Driving',statute:'169.13 subd. 2(a)'}
+};
+
+/* Reference statute degree → ref statute */
+const RD={'4th':'169A.27 subd. 2','3rd':'169A.26 subd. 2','2nd':'169A.25 subd. 2','1st':'169A.24 subd. 2'};
+
+/* Reference statute count by degree */
+const RSC={
+  '1st':{desc:'First Degree Driving While Impaired', statute:'169A.24 subd. 1'},
+  '2nd':{desc:'Second Degree Driving While Impaired',statute:'169A.25 subd. 1'},
+  '3rd':{desc:'Third Degree Driving While Impaired', statute:'169A.26 subd. 1'},
+  '4th':{desc:'Fourth Degree Driving While Impaired',statute:'169A.27 subd. 1'}
+};
+
+const PENALTIES={
+  'Misdemeanor':      {jail:'90',  fine:'$1,000',unit:'days in jail'},
+  'Gross Misdemeanor':{jail:'365', fine:'$3,000',unit:'days in jail'},
+  'Felony':           {jail:'',    fine:'',       unit:'years in prison'}
+};
+
+const RIGHTS=[
+  'the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;',
+  'the right to confront and cross-examine all witnesses against me;',
+  'the right to remain silent or to testify for myself;',
+  'the right to subpoena witnesses to appear on my behalf;',
+  'the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.'
+];
+
+/* ═══════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════ */
+const S={
+  type:'dwi',
+  clientName:'',county:'',caseNumber:'',clientDob:'',
+  charges:[{id:1,desc:'',statute:'',ref:'',ct:null,rd:null,rscDeg:'4th'}],
+  pleaSel:[],
+  rscOn:false,rscDeg:'4th',
+  redOn:false,
+  amendedCountId:null,
+  showCDPicker:false,
+  offDate:'',offCity:'',offCounty:'',facts:'',
+  level:'Misdemeanor',maxJail:'90',maxFine:'$1,000',jailUnit:'days in jail',
+  sentencing:'',terms:'',pmDate:'',
+  _nid:2
+};
+
+/* ═══════════════════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════════════════ */
+const $=id=>document.getElementById(id);
+const esc=s=>s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';
+const ph=s=>`<span class="p-ph">${s}</span>`;
+const sl=(w='200px')=>`<div class="p-sl" style="width:${w}"></div>`;
+
+function fmtDob(s){if(!s)return'';const[y,m,d]=s.split('-');return`${m}/${d}/${y}`}
+function fmtLong(s){
+  if(!s)return'[DATE]';
+  const[y,m,d]=s.split('-');
+  const M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return`${M[+m-1]} ${+d}, ${y}`;
+}
+function fmtShort(s){if(!s)return'[DATE]';const[y,m,d]=s.split('-');return`${m}/${d}/${y}`}
+function fmtPm(s){
+  if(!s)return{day:'___',month:'_________',yr:'_'};
+  const[y,m,d]=s.split('-');
+  const M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return{day:+d,month:M[+m-1],yr:y.slice(-1)};
+}
+
+function getEffChgs(){
+  return S.charges.map((c,i)=>({...c,n:i,special:false}));
+}
+
+function buildCnt(c,n,inclRef=true,isLast=false){
+  let t=`Count ${n}: ${c.desc}`;
+  if(c.statute)t+=`, a violation of Minnesota Statute ${c.statute}`;
+  if(inclRef&&c.ref)t+=` with reference to Minnesota Statute ${c.ref}`;
+  return t+(isLast?'.':';');
+}
+
+/* ═══════════════════════════════════════════════════════
+   RENDER — CHARGES (DWI)
+═══════════════════════════════════════════════════════ */
+function dwiChargeHTML(c,i){
+  const isRef     = c.ct==='ref';
+  const isOther   = c.ct==='other';
+  const hasRegRef = !isRef; // show "with reference to" degree only on non-ref charges
+  const rscDeg    = c.rscDeg||'4th';
+
+  return`
+<div class="chg-card" id="cc-${c.id}">
+  <div class="chg-hdr">
+    <span class="chg-lbl">Count ${i+1}</span>
+  </div>
+
+  <div class="row" style="margin-bottom:${isRef||isOther?'8':'4'}px">
+    <div class="f2">
+      <label>Charge</label>
+      <select onchange="setChgType(${c.id},this.value)">
+        <option value="">— Select charge —</option>
+        <optgroup label="Alcohol">
+          <option value=".08"     ${c.ct==='.08'     ?'selected':''}>.08 or More</option>
+          <option value="UI"      ${c.ct==='UI'       ?'selected':''}>Under the Influence</option>
+          <option value="R"       ${c.ct==='R'        ?'selected':''}>Refusal</option>
+        </optgroup>
+        <optgroup label="Controlled Substances">
+          <option value="cs-imp"  ${c.ct==='cs-imp'  ?'selected':''}>Controlled Substance (Impaired)</option>
+          <option value="intox"   ${c.ct==='intox'   ?'selected':''}>Intoxicating Substance</option>
+          <option value="cs-cont" ${c.ct==='cs-cont' ?'selected':''}>Controlled Substance (Contains)</option>
+          <option value="cannabis"${c.ct==='cannabis' ?'selected':''}>Cannabis</option>
+        </optgroup>
+        <optgroup label="Other">
+          <option value="ref"     ${c.ct==='ref'      ?'selected':''}>Reference Statute</option>
+          <option value="careless"${c.ct==='careless' ?'selected':''}>Careless Driving</option>
+          <option value="other"   ${c.ct==='other'    ?'selected':''}>Other</option>
+        </optgroup>
+      </select>
+    </div>
+    ${isRef?`
+    <div class="f1">
+      <label>Degree</label>
+      <select onchange="setRscChgDeg(${c.id},this.value)">
+        <option value="1st"${rscDeg==='1st'?'selected':''}>1st Degree</option>
+        <option value="2nd"${rscDeg==='2nd'?'selected':''}>2nd Degree</option>
+        <option value="3rd"${rscDeg==='3rd'?'selected':''}>3rd Degree</option>
+        <option value="4th"${rscDeg==='4th'?'selected':''}>4th Degree</option>
+      </select>
+    </div>`:hasRegRef?`
+    <div class="f1">
+      <label>With reference to</label>
+      <select onchange="setRefDeg(${c.id},this.value)">
+        <option value="">— None —</option>
+        <option value="4th"${c.rd==='4th'?'selected':''}>4th Degree</option>
+        <option value="3rd"${c.rd==='3rd'?'selected':''}>3rd Degree</option>
+        <option value="2nd"${c.rd==='2nd'?'selected':''}>2nd Degree</option>
+        <option value="1st"${c.rd==='1st'?'selected':''}>1st Degree</option>
+      </select>
+    </div>`:''}
+  </div>
+
+  <div style="margin-bottom:8px">
+    <label>Description</label>
+    <textarea rows="2" oninput="updChg(${c.id},'desc',this.value)"
+      placeholder="${isOther?'Type the charge description here':'Auto-filled from charge selection above'}">${esc(c.desc)}</textarea>
+  </div>
+  <div class="row" style="margin-bottom:4px">
+    <div class="f1">
+      <label>Charge statute</label>
+      <input value="${esc(c.statute)}" oninput="updChg(${c.id},'statute',this.value)"
+        placeholder="${isOther?'e.g., 169A.20 subd. 1(5)':'auto-filled'}" />
+    </div>
+    ${hasRegRef?`
+    <div class="f1">
+      <label>Reference statute</label>
+      <input value="${esc(c.ref)}" oninput="updChg(${c.id},'ref',this.value)" placeholder="e.g., 169A.27 subd. 2" />
+    </div>`:''}
+  </div>
+</div>`;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RENDER — CHARGES (Standard)
+═══════════════════════════════════════════════════════ */
+function stdChargeHTML(c,i){
+  const only=S.charges.length===1;
+  return`
+<div class="chg-card" id="cc-${c.id}">
+  <div class="chg-hdr">
+    <span class="chg-lbl">Count ${i+1}</span>
+    ${!only?`<button class="btn btn-sm btn-danger" onclick="remChg(${c.id})">Remove</button>`:''}
+  </div>
+  <div style="margin-bottom:8px">
+    <label>Charge description</label>
+    <textarea rows="2" oninput="updChg(${c.id},'desc',this.value)" placeholder="e.g., 4th Degree Assault">${esc(c.desc)}</textarea>
+  </div>
+  <div class="row">
+    <div class="f2">
+      <label>Charge statute</label>
+      <input value="${esc(c.statute)}" oninput="updChg(${c.id},'statute',this.value)" placeholder="609.2231.1(c)(2)" />
+    </div>
+  </div>
+</div>`;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RENDER — PLEA SELECTOR
+═══════════════════════════════════════════════════════ */
+function renderPlea(){
+  const el=$('plea-sec');if(!el)return;
+  const eff=getEffChgs();
+  let h='';
+
+  if(S.type==='dwi'){
+    const hasAmend=S.amendedCountId!==null;
+    const amendedChg=hasAmend?eff.find(c=>String(c.id)===String(S.amendedCountId)):null;
+    const amendedN=amendedChg?eff.indexOf(amendedChg)+1:null;
+
+    h+=`<div style="margin-bottom:12px;padding:10px;border-radius:8px;background:${hasAmend?'var(--blue-bg)':'#f9fafb'};border:1.5px solid ${hasAmend?'var(--blue-bd)':'var(--border)'}">`;
+    h+=`<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <span style="font-size:12px;font-weight:500;color:var(--muted)">Careless Driving amendment:</span>`;
+
+    if(!hasAmend){
+      // Show button + picker if open
+      h+=`<button class="qbtn${S.showCDPicker?' on':''}" onclick="clickCareless()">${S.showCDPicker?'Cancel':'Careless Driving'}</button>`;
+      if(S.showCDPicker&&eff.length){
+        h+=`<span style="font-size:11px;color:var(--muted)">Which count?</span>`;
+        eff.forEach((c,n)=>{
+          h+=`<button class="dbtn" onclick="selectAmended('${c.id}')" style="background:var(--navy);color:#fff;border-color:var(--navy)">Count ${n+1}</button>`;
+        });
+      }
+    } else {
+      // Show the amendment + clear button
+      h+=`<span style="font-size:13px;font-weight:600;color:var(--navy)">AMENDED COUNT ${amendedN}: Careless Driving</span>`;
+      h+=`<button class="btn btn-sm btn-danger" onclick="clearAmended()">× Clear</button>`;
+    }
+    h+=`</div></div>`;
+  }
+
+  eff.forEach((c,n)=>{
+    const sid=String(c.id);
+    const isAmended=S.amendedCountId!==null&&String(S.amendedCountId)===sid;
+    const on=isAmended||S.pleaSel.includes(c.id)||S.pleaSel.includes(sid);
+    const desc=c.desc||'(no description entered)';
+    const statTxt=c.statute?` — Minn. Stat. §${c.statute}`:'';
+    h+=`<div class="plea-row ${on?'plea-on':'plea-off'}" onclick="${isAmended?'':  `togPlea('${sid}')`}">
+      <input type="checkbox" class="plea-cb" ${on?'checked':''} ${isAmended?'disabled':''}
+        onclick="event.stopPropagation();togPlea('${sid}')" />
+      <span class="plea-txt">
+        ${isAmended
+          ?`<strong>AMENDED COUNT ${n+1}:</strong> Careless Driving — Minn. Stat. §169.13 subd. 2(a)<span class="badge" style="background:#dbeafe;color:#1e40af">Amended</span>`
+          :`<strong>Count ${n+1}:</strong> ${esc(desc)}<span style="color:var(--muted)">${esc(statTxt)}</span>${c.special?`<span class="badge">${c.badge}</span>`:''}`
+        }
+      </span>
+    </div>`;
+  });
+  if(!eff.length)h+='<p style="font-size:13px;color:var(--muted)">Add charges above first.</p>';
+  el.innerHTML=h;
+}
+
+function renderChgSec(){
+  const el=$('chg-sec');if(!el)return;
+  const isDwi=S.type==='dwi';
+  const n=S.charges.length;
+  let h=`<div class="row" style="margin-bottom:12px;align-items:flex-end">
+    <div style="flex:0 0 auto">
+      <label>Number of counts</label>
+      <select onchange="setCountNum(+this.value)" style="width:auto;min-width:80px">
+        ${Array.from({length:10},(_,i)=>`<option${i+1===n?' selected':''}>${i+1}</option>`).join('')}
+      </select>
+    </div>
+  </div>`;
+  S.charges.forEach((c,i)=>{h+=isDwi?dwiChargeHTML(c,i):stdChargeHTML(c,i);});
+  el.innerHTML=h;
+  renderPlea();
+}
+
+/* ═══════════════════════════════════════════════════════
+   RENDER — TYPE FIELDS
+═══════════════════════════════════════════════════════ */
+function renderTF(){
+  const tf=$('tf'),dw=$('dob-wrap'),lbl=$('lbl-cn');
+  if(S.type==='pm'){
+    dw.style.display='none';lbl.textContent='District court file no.';
+    tf.innerHTML=pmFieldsHTML();
+    return;
+  }
+  dw.style.display='';lbl.textContent='Case number';
+
+  const penOk=S.level!=='Felony';
+  const isDwi=S.type==='dwi';
+  tf.innerHTML=`
+  <div class="card">
+    <div class="sec-hdr">Charges filed</div>
+    <div id="chg-sec"></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-hdr">Plea — count(s) pleading guilty to</div>
+    <div id="plea-sec"></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-hdr">Offense details & factual basis</div>
+    <div class="row">
+      <div class="f1"><label>Date of offense</label><input type="date" id="f-od" value="${esc(S.offDate)}" oninput="S.offDate=this.value" /></div>
+      <div class="f1"><label>City of offense</label><input id="f-oc" value="${esc(S.offCity)}" oninput="S.offCity=this.value" placeholder="Robbinsdale" /></div>
+      <div class="f1"><label>County of offense</label><input id="f-oco" value="${esc(S.offCounty||S.county)}" oninput="S.offCounty=this.value" placeholder="Hennepin" /></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+      <label style="margin:0">Facts / factual basis</label>
+      ${isDwi?`<button class="btn btn-sm" onclick="autoFacts()">Auto-fill standard DWI facts</button>`:''}
+    </div>
+    <textarea id="f-facts" rows="5" oninput="S.facts=this.value"
+      placeholder="${isDwi?'Click Auto-fill or enter the factual basis for the plea.':'Describe what the defendant did. Appears below \'I did the following:\''}"
+    >${esc(S.facts)}</textarea>
+  </div>
+
+  <div class="card">
+    <div class="sec-hdr">Charge level & maximum penalties</div>
+    <div class="row">
+      <div class="f1"><label>Charge level</label>
+        <select onchange="changeLevel(this.value)">
+          ${['Misdemeanor','Gross Misdemeanor','Felony'].map(l=>`<option${S.level===l?' selected':''}>${l}</option>`).join('')}
+        </select>
+      </div>
+      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="${esc(S.maxFine)}" oninput="S.maxFine=this.value" placeholder="$1,000" /></div>
+      <div class="f1"><label>Maximum incarceration</label><input id="f-jail" value="${esc(S.maxJail)}" oninput="S.maxJail=this.value" placeholder="90" /></div>
+      <div class="f1"><label>Unit</label>
+        <select onchange="S.jailUnit=this.value">
+          <option${S.jailUnit==='days in jail'?' selected':''}>days in jail</option>
+          <option${S.jailUnit==='years in prison'?' selected':''}>years in prison</option>
+        </select>
+      </div>
+    </div>
+    ${penOk?`<div class="notice notice-ok">Auto-filled: ${S.level} — ${S.maxFine} max fine / ${S.maxJail} ${S.jailUnit}</div>`:''}
+  </div>
+
+  <div class="card">
+    <div class="sec-hdr">Sentencing agreement (paragraph 9)</div>
+    <textarea id="f-sent" rows="4" oninput="S.sentencing=this.value"
+      placeholder="e.g., Plead Guilty to Count 2. 90 days in jail, with 89 days stayed for 2 years to Hennepin County Probation..."
+    >${esc(S.sentencing)}</textarea>
+  </div>`;
+
+  renderChgSec();
+}
+
+function pmFieldsHTML(){
+  const pd=fmtPm(S.pmDate);
+  return`
+  <div class="card">
+    <div class="sec-hdr">Terms & conditions</div>
+    <textarea id="f-terms" rows="6" oninput="S.terms=this.value"
+      placeholder="Enter the conditions of the stay of adjudication...">${esc(S.terms)}</textarea>
+  </div>
+  <div class="card">
+    <div class="sec-hdr">Signature date</div>
+    <div class="row">
+      <div class="f1"><label>Date</label><input type="date" id="f-pmd" value="${esc(S.pmDate)}" oninput="S.pmDate=this.value;renderTF()" /></div>
+      <div style="flex:2;display:flex;align-items:flex-end;padding-bottom:2px">
+        ${S.pmDate?`<span style="font-size:12px;color:var(--muted)">→ "Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}"</span>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════════
+   STATE HANDLERS
+═══════════════════════════════════════════════════════ */
+function setType(t){
+  S.type=t;
+  const sel=$('type-select');if(sel)sel.value=t;
+  renderTF();
+}
+
+function onCounty(){
+  S.county=$('s-county').value;
+  const d=CD[S.county]||'';
+  $('s-district').value=DN[d]?`${DN[d]} JUDICIAL DISTRICT`:'';
+  // Mirror county into offense details if that field exists
+  S.offCounty=S.county;
+  const oco=$('f-oco');if(oco)oco.value=S.county;
+}
+
+function addChg(){S.charges.push({id:S._nid++,desc:'',statute:'',ref:'',ct:null,rd:null,rscDeg:'4th'});renderChgSec()}
+function remChg(id){
+  S.charges=S.charges.filter(c=>c.id!==id);
+  S.pleaSel=S.pleaSel.filter(p=>p!==id&&p!==String(id));
+  if(String(S.amendedCountId)===String(id))S.amendedCountId=null;
+  renderChgSec();
+}
+
+function setCountNum(n){
+  const cur=S.charges.length;
+  if(n>cur){
+    for(let i=cur;i<n;i++)S.charges.push({id:S._nid++,desc:'',statute:'',ref:'',ct:null,rd:null,rscDeg:'4th'});
+  }else if(n<cur){
+    const removed=S.charges.slice(n).map(c=>String(c.id));
+    S.charges=S.charges.slice(0,n);
+    S.pleaSel=S.pleaSel.filter(p=>!removed.includes(String(p)));
+    if(removed.includes(String(S.amendedCountId)))S.amendedCountId=null;
+  }
+  renderChgSec();
+}
+
+function updChg(id,f,v){
+  const c=S.charges.find(x=>x.id===id);
+  if(c)c[f]=v;
+}
+
+function setChgType(id,type){
+  const c=S.charges.find(x=>x.id===id);if(!c)return;
+  c.ct=type||null;
+  if(CT[type]){
+    // .08, UI, R, careless — auto-fill from constants
+    c.desc=CT[type].desc;c.statute=CT[type].statute;
+  } else if(type==='ref'){
+    // Reference statute — fill from RSC based on current rscDeg
+    const info=RSC[c.rscDeg||'4th'];
+    c.desc=info.desc;c.statute=info.statute;
+    c.ref='';c.rd=null; // clear "with reference to" since this IS the ref count
+  } else if(type==='other'){
+    c.desc='';c.statute=''; // clear for user to type
+  }
+  renderChgSec();
+}
+
+function setRscChgDeg(id,deg){
+  // Updates the RSC degree on a charge set to type='ref'
+  const c=S.charges.find(x=>x.id===id);if(!c)return;
+  c.rscDeg=deg;
+  if(c.ct==='ref'){const info=RSC[deg];c.desc=info.desc;c.statute=info.statute;}
+  renderChgSec();
+}
+
+function setRefDeg(id,deg){
+  const c=S.charges.find(x=>x.id===id);if(!c)return;
+  if(!deg){c.rd=null;c.ref='';renderChgSec();return;}
+  c.rd=deg;c.ref=RD[deg];
+  renderChgSec();
+}
+
+function clrRef(id){
+  const c=S.charges.find(x=>x.id===id);if(!c)return;
+  c.rd=null;c.ref='';renderChgSec();
+}
+
+function togPlea(sid){
+  const numId=isNaN(sid)?sid:Number(sid);
+  const has=S.pleaSel.includes(numId)||S.pleaSel.includes(sid);
+  if(has){S.pleaSel=S.pleaSel.filter(p=>p!==numId&&p!==sid)}
+  else{S.pleaSel.push(numId)}
+  renderPlea();
+}
+
+function toggleRed(v){S.redOn=v;if(!v){S.pleaSel=S.pleaSel.filter(p=>p!=='red')}renderChgSec()}
+
+// Careless Driving amendment handlers
+function clickCareless(){
+  S.showCDPicker=!S.showCDPicker;
+  renderPlea();
+}
+function selectAmended(sid){
+  S.amendedCountId=isNaN(sid)?sid:Number(sid);
+  S.showCDPicker=false;
+  renderPlea();
+}
+function clearAmended(){
+  S.amendedCountId=null;
+  S.showCDPicker=false;
+  renderPlea();
+}
+
+function changeLevel(lv){
+  S.level=lv;const p=PENALTIES[lv];
+  S.maxJail=p.jail;S.maxFine=p.fine;S.jailUnit=p.unit;
+  renderTF();
+}
+
+function autoFacts(){
+  const d=$('f-od')?.value||S.offDate;
+  const ci=$('f-oc')?.value||S.offCity;
+  const co=$('f-oco')?.value||S.offCounty;
+  S.offDate=d;S.offCity=ci;S.offCounty=co;
+  const txt=`On or about ${fmtLong(d)}, in the city of ${ci||'[CITY]'}, ${co||'[COUNTY]'} County, Minnesota: I was driving a motor vehicle when I was stopped by law enforcement. Prior to driving, I had consumed alcohol. While speaking with the officer, they noticed signs that I may be impaired. I was then asked to step out of the vehicle to perform a series of field sobriety tests. I performed poorly on those tests and was subsequently arrested on suspicion of driving while impaired. While at the station, I was read the Minnesota Breath Test Advisory and agreed to take a breath test. The results of that test showed my Blood Alcohol Concentration to be .08 or more, and that test was taken within 2 hours of driving.`;
+  S.facts=txt;const ta=$('f-facts');if(ta)ta.value=txt;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PREVIEW
+═══════════════════════════════════════════════════════ */
+function syncFields(){
+  const g=(id,k)=>{const e=$(id);if(e)S[k]=e.value};
+  g('s-name','clientName');g('s-dob','clientDob');g('s-caseno','caseNumber');g('s-county','county');
+  g('f-od','offDate');g('f-oc','offCity');g('f-oco','offCounty');g('f-facts','facts');
+  g('f-fine','maxFine');g('f-jail','maxJail');g('f-sent','sentencing');
+  g('f-terms','terms');g('f-pmd','pmDate');
+}
+
+function showPreview(){
+  syncFields();
+  $('fv').style.display='none';$('pv').style.display='block';
+  $('drv-status').innerHTML='';
+  $('btn-drv').textContent='Push to Google Drive';$('btn-drv').disabled=false;
+  $('petition-doc').innerHTML=buildPvHTML();
+}
+function showForm(){$('pv').style.display='none';$('fv').style.display='block'}
+
+function buildPvHTML(){return S.type==='pm'?buildPmPV():buildMainPV()}
+
+function buildPmPV(){
+  const pd=fmtPm(S.pmDate);
+  const co=S.county?S.county.toUpperCase():ph('[COUNTY]');
+  const dist=CD[S.county]||'';
+  const dn=DN[dist]||ph('[DISTRICT]');   // e.g. TENTH, not 10th
+  const cn=S.caseNumber||ph('[FILE NO]');
+  const nm=S.clientName||ph('[CLIENT]');
+  return`
+<div class="p-hdr" style="grid-template-columns:1fr 1fr;display:grid;margin-bottom:6px">
+  <div><strong>STATE OF MINNESOTA</strong><br><strong>COUNTY OF ${co}</strong></div>
+  <div style="text-align:right"><strong>DISTRICT COURT</strong><br><strong>${dn} JUDICIAL DISTRICT</strong></div>
+</div>
+<div class="p-dbl"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:12px;align-items:start">
+  <div>
+    <div><strong>STATE OF MINNESOTA,</strong></div>
+    <div style="padding-left:3rem">Plaintiff,</div>
+    <div style="margin:4px 0">-vs-</div>
+    <div><strong>${nm},</strong></div>
+    <div style="padding-left:3rem">Defendant.</div>
+  </div>
+  <div>
+    <div style="font-weight:700;text-align:center">PETITION TO ENTER PLEA OF GUILTY<br>TO PETTY MISDEMEANOR</div>
+    <div style="margin-top:12px">District Court File No. ${cn}</div>
+  </div>
+</div>
+<hr class="p-rule">
+<div class="p-para">The State of Minnesota agrees to a stay of adjudication on the petty misdemeanor charge in the above-entitled matter, subject to the Court's approval. The following conditions shall apply:</div>
+<div style="padding-left:2rem;margin-bottom:2rem">
+  <strong>1. TERMS</strong>
+  <div style="margin-top:6px;white-space:pre-wrap">${S.terms||ph('[Enter terms above]')}</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem">
+  <div style="padding-top:1.5rem">${sl('220px')}<div>Prosecutor</div></div>
+  <div style="padding-top:1.5rem">${sl('220px')}<div>Defendant</div></div>
+
+  <div></div>
+  <div style="padding-top:1.5rem">${sl('220px')}<div>Gerard W. Mannion, Attorney for Defendant</div></div>
+
+  <div style="padding-top:1.5rem;font-size:13px;display:flex;align-items:flex-end">
+    Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}
+  </div>
+  <div style="padding-top:1.5rem">${sl('220px')}<div>Judge of District Court</div></div>
+</div>`;
+}
+
+function buildCntHTML(c,n,inclRef=true,amended=false,isLast=false){
+  const end=isLast?'.':';';
+  if(amended){
+    return`<strong>AMENDED COUNT ${n}:</strong> Careless Driving, a violation of Minnesota Statute 169.13 subd. 2(a)${end}`;
+  }
+  let desc=c.desc||'';
+  if(c.statute)desc+=`, a violation of Minnesota Statute ${c.statute}`;
+  if(inclRef&&c.ref)desc+=` with reference to Minnesota Statute ${c.ref}`;
+  return`<strong>Count ${n}:</strong> ${esc(desc)}${end}`;
+}
+
+function buildMainPV(){
+  const co=S.county?S.county.toUpperCase():ph('[COUNTY]');
+  const d=CD[S.county]||'';
+  const dn=DN[d]?`${DN[d]} JUDICIAL DISTRICT`:ph('[DISTRICT] JUDICIAL DISTRICT');
+  const nm=S.clientName||ph('[CLIENT NAME]');
+  const dob=fmtDob(S.clientDob)||ph('[DOB]');
+  const cn=S.caseNumber||ph('[CASE NO]');
+  const isDwi=S.type==='dwi';
+  const eff=getEffChgs();
+  const pleaCs=eff.filter(c=>S.pleaSel.includes(c.id)||S.pleaSel.includes(String(c.id)));
+  const pleaLbls=pleaCs.map(c=>`Count ${eff.indexOf(c)+1}`).join(' and ');
+  const inc=`${S.maxJail} ${S.jailUnit}`;
+
+  let cHtml='',pHtml='';
+  eff.forEach((c,n)=>{
+    const isLast=n===eff.length-1;
+    cHtml+=`<div class="p-chg">${buildCntHTML(c,n+1,isDwi,false,isLast)}</div>`;
+  });
+
+  // Build plea paragraph — amended count always shows as AMENDED COUNT X
+  const amendedIdx=S.amendedCountId!==null?eff.findIndex(c=>String(c.id)===String(S.amendedCountId)):-1;
+  const pleaSet=new Set([...pleaCs.map(c=>String(c.id))]);
+  if(amendedIdx>=0)pleaSet.add(String(eff[amendedIdx].id));
+
+  const pleaLblList=[];
+  if(pleaSet.size){
+    // Collect plea items first so we can mark the last one
+    const pleaItems=[];
+    eff.forEach((c,n)=>{
+      if(!pleaSet.has(String(c.id)))return;
+      const isAmend=amendedIdx>=0&&String(c.id)===String(eff[amendedIdx].id);
+      pleaItems.push({c,n,isAmend});
+      pleaLblList.push(isAmend?`AMENDED COUNT ${n+1}`:`Count ${n+1}`);
+    });
+    pleaItems.forEach(({c,n,isAmend},i)=>{
+      const isLast=i===pleaItems.length-1;
+      pHtml+=`<div class="p-chg">${buildCntHTML(c,n+1,isDwi,isAmend,isLast)}</div>`;
+    });
+  }else{
+    pHtml=`<div class="p-ind" style="margin-top:6px">${ph('[Select plea counts in form]')}</div>`;
+  }
+  const pleaLbls2=pleaLblList.join(' and ');
+
+  let para3='';
+  if(isDwi){
+    para3=`<strong>3.</strong>&ensp;I am pleading guilty to ${pleaLbls2||ph('[COUNT]')} because of the following: ${S.facts||ph('[Enter facts in form]')}`;
+  }else{
+    const od=S.offDate?fmtShort(S.offDate):'[DATE]';
+    para3=`<strong>3.</strong>&ensp;I am pleading guilty to ${pleaLbls2||ph('[COUNT]')} because on or about <strong>${od}</strong>, within the city of <strong>${S.offCity||'[CITY]'}</strong>, <strong>${S.offCounty||'[COUNTY]'}</strong> County, State of <strong>Minnesota</strong>, I did the following:
+    <div class="p-ind" style="margin-top:8px;white-space:pre-wrap">${S.facts||ph('[Enter facts in form]')}</div>`;
+  }
+
+  const sigBlock=isDwi
+    ?`<div>${sl()}<div style="font-size:12px">Defendant</div></div><div>${sl()}<div style="font-size:12px">Date</div></div>`
+    :`<div class="p-sg"><div>${sl()}<div style="font-size:12px">Defendant</div></div><div>${sl()}<div style="font-size:12px">Date</div></div></div>`;
+
+  const p11=isDwi?`<div class="p-para"><strong>11.</strong>&ensp;Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</div>`:'';
+
+  return`
+<div class="p-hdr"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
+<div class="p-hdr"><span>COUNTY OF ${co}</span><span>${dn}</span></div>
+<hr class="p-rule">
+<div class="p-cap">
+  <div class="p-cap-l">
+    <div>State of Minnesota,</div>
+    <div style="padding-left:2.5rem">Plaintiff,</div>
+    <div style="margin:6px 0">vs.</div>
+    <div style="font-weight:700">${nm}</div>
+    <div style="padding-left:2.5rem">Defendant.</div>
+  </div>
+  <div class="p-cap-r">
+    <div style="font-weight:700;text-align:center">PETITION TO ENTER<br>PLEA OF GUILTY</div>
+    <div style="margin-top:8px;white-space:nowrap">Case No. ${cn}</div>
+  </div>
+</div>
+<hr class="p-rule">
+
+<div class="p-para"><strong>1.</strong>&ensp;I, <strong>${nm}</strong>, DOB <strong>${dob}</strong>, have reviewed the charges against me, and I understand them:${cHtml}</div>
+<div class="p-para"><strong>2.</strong>&ensp;I am pleading guilty to:${pHtml}</div>
+<div class="p-para">${para3}</div>
+<div class="p-para"><strong>4.</strong>&ensp;I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</div>
+<div class="p-para"><strong>5.</strong>&ensp;I understand that I was charged with a <strong>${S.level}</strong>, which carries a maximum sentence of a <strong>${S.maxFine}</strong> fine and/or <strong>${inc}.</strong></div>
+<div class="p-para"><strong>6.</strong>&ensp;I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>Gerard W. Mannion</strong>.</div>
+<div class="p-para"><strong>7.</strong>&ensp;I understand that (under the original <strong>${S.level}</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:
+  ${RIGHTS.map((r,i)=>`<div class="p-ind" style="margin-top:4px">${String.fromCharCode(97+i)}. ${r}</div>`).join('')}
+</div>
+<div class="p-para"><strong>8.</strong>&ensp;Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</div>
+<div class="p-para"><strong>9.</strong>&ensp;I am entering my plea of guilty based on the following sentencing agreement:
+  <div class="p-ind" style="margin-top:8px;font-style:italic;font-weight:700;text-decoration:underline">
+    ${S.sentencing||`<span style="color:#9CA3AF;text-decoration:none;font-weight:400;font-style:normal">${ph('[Enter sentencing agreement in form]')}</span>`}
+  </div>
+</div>
+<div class="p-para"><strong>10.</strong>&ensp;I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</div>
+${p11}
+${sigBlock}
+<div style="margin-top:1.5rem;font-size:12px;line-height:1.7">Gerard W. Mannion states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
+<div class="p-sg" style="margin-top:1.5rem;align-items:start">
+  <div>${sl('190px')}<div style="font-size:12px;line-height:1.7"><strong>Gerard W. Mannion</strong> (#404006)<br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax<br>gmannion@geraldmiller.com</div></div>
+  <div>${sl()}<div style="font-size:12px">Date</div></div>
+</div>
+<div class="p-sg" style="margin-top:1.5rem">
+  <div>${sl('190px')}<div style="font-size:12px">Prosecuting Attorney</div></div>
+  <div>${sl()}<div style="font-size:12px">Date</div></div>
+</div>
+<div class="p-sg" style="margin-top:1.5rem">
+  <div>${sl('190px')}<div style="font-size:12px">Judge of District Court</div></div>
+  <div>${sl()}<div style="font-size:12px">Date</div></div>
+</div>`;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TEXT (copy / drive)
+═══════════════════════════════════════════════════════ */
+function buildTxt(){
+  if(S.type==='pm'){
+    const pd=fmtPm(S.pmDate);
+    const co=(S.county||'[COUNTY]').toUpperCase();
+    const dist=CD[S.county]||'';
+    const dn=DN[dist]||'[DISTRICT]';
+    return[
+      `STATE OF MINNESOTA\t\t\t\t\tDISTRICT COURT`,
+      `COUNTY OF ${co}\t\t\t\t\t${dn} JUDICIAL DISTRICT`,``,
+      `STATE OF MINNESOTA,`,`\t\t\tPlaintiff,\t\t\tPETITION TO ENTER PLEA OF GUILTY`,`\t\t-vs-\t\t\t\t\tTO PETTY MISDEMEANOR`,``,
+      `${S.clientName||'[CLIENT]'},`,`\t\t\tDefendant.\t\t\tDistrict Court File No. ${S.caseNumber}`,``,
+      `The State of Minnesota agrees to a stay of adjudication on the petty misdemeanor charge in the above-entitled matter, subject to the Court's approval. The following conditions shall apply:`,``,
+      `\t1. TERMS`,``,`\t${S.terms||'[TERMS]'}`,``,
+      `________________________________\t\t________________________________`,`Prosecutor\t\t\t\t\tDefendant`,``,
+      `\t\t\t\t\t\t________________________________`,`\t\t\t\t\t\tGerard W. Mannion, Attorney for Defendant`,``,
+      `Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}\t\t________________________________`,`\t\t\t\t\t\tJudge of District Court`
+    ].join('\n');
+  }
+
+  const isDwi=S.type==='dwi';
+  const eff=getEffChgs();
+  const pleaCs=eff.filter(c=>S.pleaSel.includes(c.id)||S.pleaSel.includes(String(c.id)));
+  const co=(S.county||'[COUNTY]').toUpperCase();
+  const d=CD[S.county]||'';const dn=DN[d]?`${DN[d]} JUDICIAL DISTRICT`:'[DISTRICT] JUDICIAL DISTRICT';
+  const inc=`${S.maxJail} ${S.jailUnit}`;
+  const cList=eff.map((c,n)=>`\t${buildCnt(c,n+1,isDwi,n===eff.length-1)}`).join('\n');
+
+  // Plea list with AMENDED COUNT support
+  const amendedIdx=S.amendedCountId!==null?eff.findIndex(c=>String(c.id)===String(S.amendedCountId)):-1;
+  const pleaSet=new Set([...pleaCs.map(c=>String(c.id))]);
+  if(amendedIdx>=0)pleaSet.add(String(eff[amendedIdx].id));
+  const pleaTxtLines=[];const pleaLblList=[];
+  eff.forEach((c,n)=>{
+    if(!pleaSet.has(String(c.id)))return;
+    const isAmend=amendedIdx>=0&&String(c.id)===String(eff[amendedIdx].id);
+    if(isAmend){
+      pleaTxtLines.push({raw:`AMENDED COUNT ${n+1}: Careless Driving, a violation of Minnesota Statute 169.13 subd. 2(a)`,lbl:`AMENDED COUNT ${n+1}`});
+    }else{
+      pleaTxtLines.push({raw:buildCnt(c,n+1,isDwi,false),lbl:`Count ${n+1}`}); // isLast fixed below
+    }
+  });
+  const pList=pleaTxtLines.map((item,i)=>{
+    const isLast=i===pleaTxtLines.length-1;
+    const txt=isLast?item.raw.replace(/;$/,'.')+(item.raw.endsWith(';')?'':'.'):item.raw;
+    return`\t${txt}`;
+  }).join('\n');
+  const pleaLbls=pleaTxtLines.map(x=>x.lbl).join(' and ');
+
+  const L=[
+    `STATE OF MINNESOTA\t\t\t\tDISTRICT COURT`,`COUNTY OF ${co}\t\t\t\t${dn}`,``,
+    `State of Minnesota,\t\t\t\tCase No. ${S.caseNumber}`,`\tPlaintiff,`,``,
+    `vs.\t\t\t\t\t\tPETITION TO ENTER PLEA OF GUILTY`,``,
+    `${S.clientName||'[CLIENT NAME]'}`,`\tDefendant.`,``,
+    `1.\tI, ${S.clientName||'[NAME]'}, DOB ${fmtDob(S.clientDob)||'[DOB]'}, have reviewed the charges against me, and I understand them:`,``,cList,``,
+    `2.\tI am pleading guilty to:`,``,pList,``
+  ];
+  if(isDwi){L.push(`3.\tI am pleading guilty to ${pleaLbls||'[COUNT]'} because of the following: ${S.facts||'[FACTS]'}`)}
+  else{const od=S.offDate?fmtShort(S.offDate):'[DATE]';L.push(`3.\tI am pleading guilty to ${pleaLbls||'[COUNT]'} because on or about ${od}, within the city of ${S.offCity||'[CITY]'}, ${S.offCounty||'[COUNTY]'} County, State of Minnesota, I did the following:`,``,`\t${S.facts||'[FACTS]'}`)}
+  L.push(``,`4.\tI make no claim that I am innocent of the charge to which I am entering a plea of guilty.`,``);
+  L.push(`5.\tI understand that I was charged with a ${S.level}, which carries a maximum sentence of a ${S.maxFine} fine and/or ${inc}.`,``);
+  L.push(`6.\tI have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, Gerard W. Mannion.`,``);
+  L.push(`7.\tI understand that (under the original ${S.level} charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:`);
+  L.push(`\ta. the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;`,`\tb. the right to confront and cross-examine all witnesses against me;`,`\tc. the right to remain silent or to testify for myself;`,`\td. the right to subpoena witnesses to appear on my behalf;`,`\te. the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.`);
+  L.push(``,`8.\tUnderstanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.`,``);
+  L.push(`9.\tI am entering my plea of guilty based on the following sentencing agreement:`,``,`\t${S.sentencing||'[SENTENCING AGREEMENT]'}`,``);
+  L.push(`10.\tI understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.`);
+  if(isDwi)L.push(``,`11.\tFurther, I also understand THE ENHANCEABILITY of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.`);
+  if(isDwi)L.push(``,`____________________________`,`Defendant`,``,`____________________________`,`Date`);
+  else L.push(``,`____________________________\t\t\t\t____________________________`,`Defendant\t\t\t\t\t\tDate`);
+  L.push(``,`Gerard W. Mannion states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty`,``);
+  L.push(`________________________________`,`Gerard W. Mannion (#404006)\t\t\t\tDate`,`Gerald Miller, P.A.`,`2915 Wayzata Boulevard South`,`Minneapolis, MN 55405`,`(612) 341-9080 Phone`,`(612) 341-9079 Fax`,`gmannion@geraldmiller.com`);
+  L.push(``,`________________________________\t\t\t\t____________________________`,`Prosecuting Attorney\t\t\t\t\tDate`);
+  L.push(``,`________________________________\t\t\t\t____________________________`,`Judge of District Court\t\t\t\t\tDate`);
+  return L.join('\n');
+}
+
+/* ═══════════════════════════════════════════════════════
+   DRIVE + COPY
+═══════════════════════════════════════════════════════ */
+async function pushDrive(){
+  const btn=$('btn-drv'),st=$('drv-status');
+  btn.textContent='Creating...';btn.disabled=true;st.innerHTML='';
+  const txt=buildTxt();
+  const typeMap={dwi:'DWI Plea',standard:'Plea',pm:'PM Plea'};
+  const title=`${typeMap[S.type]||'Plea'} - ${S.clientName||'Client'} - ${S.caseNumber||'Case'}`;
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:1000,
+        mcp_servers:[{type:'url',url:'https://drivemcp.googleapis.com/mcp/v1',name:'google-drive'}],
+        messages:[{role:'user',content:`Create a new Google Doc titled "${title}" with this exact text:\n\n${txt}\n\nReturn only the document URL.`}]
+      })
+    });
+    const data=await r.json();
+    const text=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join(' ');
+    const m=text.match(/https:\/\/docs\.google\.com\/[^\s"'>)]+/);
+    st.innerHTML=m
+      ?`<span class="stat-ok">Saved! </span><a class="drv-link" href="${m[0]}" target="_blank">Open in Drive →</a>`
+      :`<span class="stat-ok">Created in Drive</span>`;
+  }catch(e){st.innerHTML='<span class="stat-err">Error — try copying instead</span>'}
+  btn.textContent='Push to Google Drive';btn.disabled=false;
+}
+
+function copyTxt(){
+  const btn=$('btn-cpy');
+  navigator.clipboard.writeText(buildTxt()).then(()=>{
+    btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy to clipboard',2000);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded',()=>{
+  const sel=$('s-county');
+  Object.keys(CD).sort().forEach(c=>{
+    const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);
+  });
+  renderTF();
+});
+</script>
+
+
+</body></html>
