@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)file:///C:/Users/gerar/Downloads/plea_petition.html -->
+<!-- saved from url=(0053)file:///C:/Users/gerar/Downloads/plea_petition_1.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plea Petition Generator — Gerald Miller P.A.</title>
-<link href="./Plea Petition Generator — Gerald Miller P.A._files/css2" rel="stylesheet">
+<link href="./Plea Petition Gen_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -285,19 +285,19 @@ textarea{resize:vertical;line-height:1.55}
     <div class="row">
       <div class="f1"><label>Charge level</label>
         <select onchange="changeLevel(this.value)">
-          <option selected="">Misdemeanor</option><option>Gross Misdemeanor</option><option>Felony</option>
+          <option>Misdemeanor</option><option>Gross Misdemeanor</option><option selected="">Felony</option>
         </select>
       </div>
-      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="$1,000" oninput="S.maxFine=this.value" placeholder="$1,000"></div>
-      <div class="f1"><label>Maximum incarceration</label><input id="f-jail" value="90" oninput="S.maxJail=this.value" placeholder="90"></div>
+      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="" oninput="S.maxFine=this.value" placeholder="$1,000"></div>
+      <div class="f1"><label>Maximum incarceration</label><input id="f-jail" value="" oninput="S.maxJail=this.value" placeholder="90"></div>
       <div class="f1"><label>Unit</label>
         <select onchange="S.jailUnit=this.value">
-          <option selected="">days in jail</option>
-          <option>years in prison</option>
+          <option>days in jail</option>
+          <option selected="">years in prison</option>
         </select>
       </div>
     </div>
-    <div class="notice notice-ok">Auto-filled: Misdemeanor — $1,000 max fine / 90 days in jail</div>
+    
   </div>
 
   <div class="card">
@@ -375,7 +375,7 @@ const RSC={
 
 const PENALTIES={
   'Misdemeanor':      {jail:'90',  fine:'$1,000',unit:'days in jail'},
-  'Gross Misdemeanor':{jail:'365', fine:'$3,000',unit:'days in jail'},
+  'Gross Misdemeanor':{jail:'364', fine:'$3,000',unit:'days in jail'},
   'Felony':           {jail:'',    fine:'',       unit:'years in prison'}
 };
 
@@ -978,8 +978,8 @@ function buildMainPV(){
     <div style="padding-left:2.5rem">Defendant.</div>
   </div>
   <div class="p-cap-r">
-    <div style="font-weight:700;text-align:center">PETITION TO ENTER<br>PLEA OF GUILTY</div>
-    <div style="margin-top:8px;white-space:nowrap">Case No. ${cn}</div>
+    <div style="white-space:nowrap">Case No. ${cn}</div>
+    <div style="margin-top:10px;font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</div>
   </div>
 </div>
 <hr class="p-rule">
