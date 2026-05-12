@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)file:///C:/Users/gerar/Downloads/plea_petition_11.html -->
+<!-- saved from url=(0054)file:///C:/Users/gerar/Downloads/plea_petition_15.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,31 +103,53 @@ textarea{resize:vertical;line-height:1.55}
 .drv-link:hover{text-decoration:underline}
 
 /* ── Petition document ── */
-.petition{background:#fff;border:1px solid var(--border);border-radius:12px;padding:2.5rem 3rem;font-family:'Merriweather',Georgia,serif;font-size:13px;line-height:1.9;color:#111;max-height:76vh;overflow-y:auto;outline:none}
+.petition{background:#fff;border:1px solid var(--border);border-radius:12px;padding:0.75in 1in;font-family:'Times New Roman',Times,serif;font-size:12pt;line-height:1.15;color:#111;max-height:76vh;overflow-y:auto;outline:none}
 .petition:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-.p-hdr{display:flex;justify-content:space-between;font-weight:700;margin-bottom:3px}
-.p-cap{display:flex;gap:3rem;margin:10px 0}
-.p-cap-l,.p-cap-r{flex:1}
-.p-rule{border:none;border-top:1px solid #111;margin:10px 0}
+
+/* Header rows: two bold lines with 1 line of space between */
+.p-hdr-row{display:flex;justify-content:space-between;font-weight:700;margin-bottom:1em}
+.p-hdr-row:last-of-type{margin-bottom:0}
+
+/* Horizontal rules */
+.p-rule{border:none;border-top:1.5px solid #111;margin:0.6em 0}
 .p-dbl{border-top:3px double #111;margin:8px 0 14px}
-.p-para{margin-bottom:14px}
-.p-ind{padding-left:2.5rem}
-.p-chg{padding-left:2.5rem;margin-top:6px;font-style:italic;font-weight:400}
-.p-chg strong{font-style:normal;font-weight:700}
-.p-sl{border-bottom:1px solid #111;margin-bottom:4px;margin-top:1.5rem}
-.p-sg{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.5rem}
-.p-ph{color:#9CA3AF;font-style:italic;font-family:'Inter',sans-serif;font-size:12px;font-weight:400}
+.p-sl{border-bottom:1px solid #111;margin-bottom:3px;margin-top:1.5em;display:inline-block}
+
+/* Caption table — proper court format */
+.p-cap{width:100%;border-collapse:collapse;margin:0.4em 0;font-family:inherit;font-size:inherit;line-height:1.15}
+.p-cap td{vertical-align:top;padding:0}
+.p-cap-gap{height:0.9em}
+.p-cap-indent{padding-left:1.5in}
+
+/* Numbered paragraphs: hanging indent with 0.5in number column */
+.p-para{display:flex;margin-bottom:1em;line-height:1.15}
+.p-pn{flex:0 0 0.5in}
+.p-pb{flex:1}
+
+/* Count items, rights, sentencing — indented 0.5in within paragraph body */
+.p-count{padding-left:0.5in;margin-top:0.9em;line-height:1.15}
+.p-count-i{padding-left:0.5in;margin-top:0.9em;font-style:italic;line-height:1.15}
+.p-count-i strong{font-style:normal;font-weight:700}
+
+/* Signature blocks */
+.p-sig-space{height:1.1em;margin-top:0.8em}
+.p-sig-line{border-bottom:1px solid #111;width:2.5in}
+.p-sig-label{margin-top:1px;line-height:1.15}
+.p-atty-info{margin-top:0;line-height:1.15}
+.p-atty-stmt{margin-top:1.4em;line-height:1.15}
+
+/* Placeholder ghost text */
+.p-ph{color:#9CA3AF;font-style:italic;font-family:'Inter',sans-serif;font-size:11pt;font-weight:400}
 
 @media print{
   .pv-bar,.hdr,#fv{display:none!important}
   .app{max-width:100%;padding:0}
-  .petition{max-height:none;border:none;border-radius:0;padding:1.5rem 2rem;overflow:visible}
+  .petition{max-height:none;border:none;border-radius:0;padding:1in;overflow:visible;font-size:12pt}
   body{background:#fff}
+  @page{margin:1in;size:letter}
 }
 @media(max-width:600px){
-  .petition{padding:1.5rem;font-size:12px}
-  .p-cap{flex-direction:column}
-  .p-sg{grid-template-columns:1fr}
+  .petition{padding:0.5in;font-size:11pt}
 }
 </style>
 </head>
@@ -203,7 +225,7 @@ textarea{resize:vertical;line-height:1.55}
     <div style="flex:0 0 auto">
       <label>Number of counts</label>
       <select onchange="setCountNum(+this.value)" style="width:auto;min-width:80px">
-        <option selected="">1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+        <option>1</option><option selected="">2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
       </select>
     </div>
   </div>
@@ -218,7 +240,7 @@ textarea{resize:vertical;line-height:1.55}
       <select onchange="setChgType(1,this.value)">
         <option value="">— Select charge —</option>
         <optgroup label="Alcohol">
-          <option value=".08">.08 or More</option>
+          <option value=".08" selected="">.08 or More</option>
           <option value="UI">Under the Influence</option>
           <option value="R">Refusal</option>
         </optgroup>
@@ -240,7 +262,7 @@ textarea{resize:vertical;line-height:1.55}
       <label>With reference to</label>
       <select onchange="setRefDeg(1,this.value)">
         <option value="">— None —</option>
-        <option value="4th">4th Degree</option>
+        <option value="4th" selected="">4th Degree</option>
         <option value="3rd">3rd Degree</option>
         <option value="2nd">2nd Degree</option>
         <option value="1st">1st Degree</option>
@@ -250,17 +272,74 @@ textarea{resize:vertical;line-height:1.55}
 
   <div style="margin-bottom:8px">
     <label>Description</label>
-    <textarea rows="2" oninput="updChg(1,&#39;desc&#39;,this.value)" placeholder="Auto-filled from charge selection above"></textarea>
+    <textarea rows="2" oninput="updChg(1,&#39;desc&#39;,this.value)" placeholder="Auto-filled from charge selection above">Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving</textarea>
   </div>
   <div class="row" style="margin-bottom:4px">
     <div class="f1">
       <label>Charge statute</label>
-      <input value="" oninput="updChg(1,&#39;statute&#39;,this.value)" placeholder="auto-filled">
+      <input value="169A.20 subd. 1(5)" oninput="updChg(1,&#39;statute&#39;,this.value)" placeholder="auto-filled">
     </div>
     
     <div class="f1">
       <label>Reference statute</label>
-      <input value="" oninput="updChg(1,&#39;ref&#39;,this.value)" placeholder="e.g., 169A.27 subd. 2">
+      <input value="169A.27 subd. 2" oninput="updChg(1,&#39;ref&#39;,this.value)" placeholder="e.g., 169A.27 subd. 2">
+    </div>
+  </div>
+</div>
+<div class="chg-card" id="cc-2">
+  <div class="chg-hdr">
+    <span class="chg-lbl">Count 2</span>
+  </div>
+
+  <div class="row" style="margin-bottom:4px">
+    <div class="f2">
+      <label>Charge</label>
+      <select onchange="setChgType(2,this.value)">
+        <option value="">— Select charge —</option>
+        <optgroup label="Alcohol">
+          <option value=".08">.08 or More</option>
+          <option value="UI" selected="">Under the Influence</option>
+          <option value="R">Refusal</option>
+        </optgroup>
+        <optgroup label="Controlled Substances">
+          <option value="cs-imp">Controlled Substance (Impaired)</option>
+          <option value="intox">Intoxicating Substance</option>
+          <option value="cs-cont">Controlled Substance (Contains)</option>
+          <option value="cannabis">Cannabis</option>
+        </optgroup>
+        <optgroup label="Other">
+          <option value="ref">Reference Statute</option>
+          <option value="careless">Careless Driving</option>
+          <option value="other">Other</option>
+        </optgroup>
+      </select>
+    </div>
+    
+    <div class="f1">
+      <label>With reference to</label>
+      <select onchange="setRefDeg(2,this.value)">
+        <option value="">— None —</option>
+        <option value="4th" selected="">4th Degree</option>
+        <option value="3rd">3rd Degree</option>
+        <option value="2nd">2nd Degree</option>
+        <option value="1st">1st Degree</option>
+      </select>
+    </div>
+  </div>
+
+  <div style="margin-bottom:8px">
+    <label>Description</label>
+    <textarea rows="2" oninput="updChg(2,&#39;desc&#39;,this.value)" placeholder="Auto-filled from charge selection above">Operating a Motor Vehicle While Under the Influence of Alcohol</textarea>
+  </div>
+  <div class="row" style="margin-bottom:4px">
+    <div class="f1">
+      <label>Charge statute</label>
+      <input value="169A.20 subd. 1(1)" oninput="updChg(2,&#39;statute&#39;,this.value)" placeholder="auto-filled">
+    </div>
+    
+    <div class="f1">
+      <label>Reference statute</label>
+      <input value="169A.27 subd. 2" oninput="updChg(2,&#39;ref&#39;,this.value)" placeholder="e.g., 169A.27 subd. 2">
     </div>
   </div>
 </div></div>
@@ -269,10 +348,15 @@ textarea{resize:vertical;line-height:1.55}
   <div class="card">
     <div class="sec-hdr">Plea — count(s) pleading guilty to</div>
     <div id="plea-sec"><div style="margin-bottom:12px;padding:10px;border-radius:8px;background:#f9fafb;border:1.5px solid var(--border)"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-      <span style="font-size:12px;font-weight:500;color:var(--muted)">Careless Driving amendment:</span><button class="qbtn" onclick="clickCareless()">Careless Driving</button></div></div><div class="plea-row plea-off" onclick="togPlea(&#39;1&#39;)">
-      <input type="checkbox" class="plea-cb" onclick="event.stopPropagation();togPlea(&#39;1&#39;)">
+      <span style="font-size:12px;font-weight:500;color:var(--muted)">Careless Driving amendment:</span><button class="qbtn" onclick="clickCareless()">Careless Driving</button></div></div><div class="plea-row plea-on" onclick="togPlea(&#39;1&#39;)">
+      <input type="checkbox" class="plea-cb" checked="" onclick="event.stopPropagation();togPlea(&#39;1&#39;)">
       <span class="plea-txt">
-        <strong>Count 1:</strong> (no description entered)<span style="color:var(--muted)"></span>
+        <strong>Count 1:</strong> Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving<span style="color:var(--muted)"> — Minn. Stat. §169A.20 subd. 1(5)</span>
+      </span>
+    </div><div class="plea-row plea-off" onclick="togPlea(&#39;2&#39;)">
+      <input type="checkbox" class="plea-cb" onclick="event.stopPropagation();togPlea(&#39;2&#39;)">
+      <span class="plea-txt">
+        <strong>Count 2:</strong> Operating a Motor Vehicle While Under the Influence of Alcohol<span style="color:var(--muted)"> — Minn. Stat. §169A.20 subd. 1(1)</span>
       </span>
     </div></div>
   </div>
@@ -332,55 +416,74 @@ textarea{resize:vertical;line-height:1.55}
     <span id="drv-status"></span>
   </div>
   <div class="petition" id="petition-doc" contenteditable="true" spellcheck="true">
-<div class="p-hdr"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
-<div class="p-hdr"><span>COUNTY OF <span class="p-ph">[COUNTY]</span></span><span><span class="p-ph">[DISTRICT] JUDICIAL DISTRICT</span></span></div>
-<hr class="p-rule">
-<div class="p-cap">
-  <div class="p-cap-l">
-    <div>State of Minnesota,</div>
-    <div style="padding-left:2.5rem">Plaintiff,</div>
-    <div style="margin:6px 0">vs.</div>
-    <div style="font-weight:700"><span class="p-ph">[CLIENT NAME]</span></div>
-    <div style="padding-left:2.5rem">Defendant.</div>
-  </div>
-  <div class="p-cap-r">
-    <div style="white-space:nowrap">Case No. <span class="p-ph">[CASE NO]</span></div>
-    <div style="margin-top:10px;font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</div>
-  </div>
-</div>
+<div class="p-hdr-row"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
+<div class="p-hdr-row"><span>COUNTY OF ANOKA</span><span>TENTH JUDICIAL DISTRICT</span></div>
 <hr class="p-rule">
 
-<div class="p-para"><strong>1.</strong> I, <strong><span class="p-ph">[CLIENT NAME]</span></strong>, DOB <strong><span class="p-ph">[DOB]</span></strong>, have reviewed the charges against me, and I understand them:<div class="p-chg"><strong>Count 1:</strong> .</div></div>
-<div class="p-para"><strong>2.</strong> I am pleading guilty to:<div class="p-ind" style="margin-top:6px"><span class="p-ph">[Select plea counts in form]</span></div></div>
-<div class="p-para"><strong>3.</strong> I am pleading guilty to <span class="p-ph">[COUNT]</span> because of the following: <span class="p-ph">[Enter facts in form]</span></div>
-<div class="p-para"><strong>4.</strong> I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</div>
-<div class="p-para"><strong>5.</strong> I understand that I was charged with a <strong>Misdemeanor</strong>, which carries a maximum sentence of a <strong>$1,000</strong> fine and/or <strong>90 days in jail.</strong></div>
-<div class="p-para"><strong>6.</strong> I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>Gerald Miller</strong>.</div>
-<div class="p-para"><strong>7.</strong> I understand that (under the original <strong>Misdemeanor</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:
-  <div class="p-ind" style="margin-top:4px">a. the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;</div><div class="p-ind" style="margin-top:4px">b. the right to confront and cross-examine all witnesses against me;</div><div class="p-ind" style="margin-top:4px">c. the right to remain silent or to testify for myself;</div><div class="p-ind" style="margin-top:4px">d. the right to subpoena witnesses to appear on my behalf;</div><div class="p-ind" style="margin-top:4px">e. the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.</div>
-</div>
-<div class="p-para"><strong>8.</strong> Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</div>
-<div class="p-para"><strong>9.</strong> I am entering my plea of guilty based on the following sentencing agreement:
-  <div class="p-ind" style="margin-top:8px;font-style:italic;font-weight:700;text-decoration:underline">
-    <span style="color:#9CA3AF;text-decoration:none;font-weight:400;font-style:normal"><span class="p-ph">[Enter sentencing agreement in form]</span></span>
-  </div>
-</div>
-<div class="p-para"><strong>10.</strong> I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</div>
-<div class="p-para"><strong>11.</strong> Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</div>
-<div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Defendant</div></div><div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Date</div></div>
-<div style="margin-top:1.5rem;font-size:12px;line-height:1.7">Gerald Miller states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
-<div class="p-sg" style="margin-top:1.5rem;align-items:start">
-  <div><div class="p-sl" style="width:190px"></div><div style="font-size:12px;line-height:1.7"><strong>Gerald Miller</strong><br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax</div></div>
-  <div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Date</div></div>
-</div>
-<div class="p-sg" style="margin-top:1.5rem">
-  <div><div class="p-sl" style="width:190px"></div><div style="font-size:12px">Prosecuting Attorney</div></div>
-  <div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Date</div></div>
-</div>
-<div class="p-sg" style="margin-top:1.5rem">
-  <div><div class="p-sl" style="width:190px"></div><div style="font-size:12px">Judge of District Court</div></div>
-  <div><div class="p-sl" style="width:200px"></div><div style="font-size:12px">Date</div></div>
-</div></div>
+<table class="p-cap">
+  <tbody><tr>
+    <td style="width:50%">State of Minnesota,</td>
+    <td style="width:50%;white-space:nowrap">Case No. 02-CR-26-100</td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td class="p-cap-indent">Plaintiff,</td>
+    <td></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td>vs.</td>
+    <td style="font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td>Jimm Bob,</td>
+    <td></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td class="p-cap-indent">Defendant.</td>
+    <td></td>
+  </tr>
+</tbody></table>
+<hr class="p-rule">
+
+<div class="p-para"><span class="p-pn">1.</span><span class="p-pb">I, Jimm Bob, <strong>DOB 05/05/1991</strong>, have reviewed the charges against me, and I understand them:<div class="p-count-i"><strong>Count 1:</strong> Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving, a violation of Minnesota Statute 169A.20 subd. 1(5) with reference to Minnesota Statute 169A.27 subd. 2;</div><div class="p-count-i"><strong>Count 2:</strong> Operating a Motor Vehicle While Under the Influence of Alcohol, a violation of Minnesota Statute 169A.20 subd. 1(1) with reference to Minnesota Statute 169A.27 subd. 2.</div></span></div>
+
+<div class="p-para"><span class="p-pn">2.</span><span class="p-pb">I am pleading guilty to:<div class="p-count-i"><strong>Count 1:</strong> Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving, a violation of Minnesota Statute 169A.20 subd. 1(5) with reference to Minnesota Statute 169A.27 subd. 2.</div></span></div>
+
+<div class="p-para"><span class="p-pn">3.</span><span class="p-pb">I am pleading guilty to Count 1 because of the following: On or about January 5, 2026, in the city of Anoka, Anoka County, Minnesota: I was driving a motor vehicle when I was stopped by law enforcement. Prior to driving, I had consumed alcohol. While speaking with the officer, they noticed signs that I may be impaired. I was then asked to step out of the vehicle to perform a series of field sobriety tests. I performed poorly on those tests and was subsequently arrested on suspicion of driving while impaired. While at the station, I was read the Minnesota Breath Test Advisory and agreed to take a breath test. The results of that test showed my Blood Alcohol Concentration to be .08 or more, and that test was taken within 2 hours of driving.</span></div>
+
+<div class="p-para"><span class="p-pn">4.</span><span class="p-pb">I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</span></div>
+
+<div class="p-para"><span class="p-pn">5.</span><span class="p-pb">I understand that I was charged with a <strong>Misdemeanor</strong>, which carries a maximum sentence of a <strong>$1,000</strong> fine and/or <strong>90 days in jail.</strong></span></div>
+
+<div class="p-para"><span class="p-pn">6.</span><span class="p-pb">I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>Kyle J. Dreger</strong>.</span></div>
+
+<div class="p-para"><span class="p-pn">7.</span><span class="p-pb">I understand that (under the original <strong>Misdemeanor</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:<div class="p-count"><div>a. the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;</div><div style="margin-top:0.2em">b. the right to confront and cross-examine all witnesses against me;</div><div style="margin-top:0.2em">c. the right to remain silent or to testify for myself;</div><div style="margin-top:0.2em">d. the right to subpoena witnesses to appear on my behalf;</div><div style="margin-top:0.2em">e. the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.</div></div></span></div>
+
+<div class="p-para"><span class="p-pn">8.</span><span class="p-pb">Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</span></div>
+
+<div class="p-para"><span class="p-pn">9.</span><span class="p-pb">I am entering my plea of guilty based on the following sentencing agreement:<div class="p-count" style="font-style:italic;font-weight:700;text-decoration:underline">Plea to count 1. </div></span></div>
+
+<div class="p-para"><span class="p-pn">10.</span><span class="p-pb">I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</span></div>
+
+<div class="p-para"><span class="p-pn">11.</span><span class="p-pb">Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</span></div>
+
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div>
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
+
+<div class="p-atty-stmt"><strong>Kyle J. Dreger</strong> states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
+
+<div class="p-sig-space"></div><div class="p-sig-line"></div>
+<div class="p-atty-info"><strong>Kyle J. Dreger</strong><br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax</div>
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
+
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Prosecutor</div>
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
+
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div>
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
 </div>
 
 </div><!-- .app -->
@@ -435,11 +538,11 @@ const RSC={
 };
 
 const ATTORNEYS={
-  'GWM':{name:'Gerard W. Mannion', bar:'#404006', email:'gmannion@geraldmiller.com'},
-  'ANB':{name:'Annaliese Barnes',   bar:'',        email:''},
-  'KJD':{name:'Kyle Dreger',        bar:'',        email:''},
-  'BDH':{name:'Brodie Hacken',      bar:'',        email:''},
-  'GAM':{name:'Gerald Miller',       bar:'',        email:''},
+  'GWM':{name:'Gerard W. Mannion',   bar:'404006', email:'gmannion@geraldmiller.com'},
+  'ANB':{name:'Annaliese N. Barnes', bar:'',       email:''},
+  'KJD':{name:'Kyle J. Dreger',      bar:'',       email:''},
+  'BDH':{name:'Brodie D. Hacken',    bar:'',       email:''},
+  'GAM':{name:'Gerald A. Miller',    bar:'',       email:''},
 };
 
 const PENALTIES={
@@ -975,7 +1078,7 @@ function buildPmPV(){
   <div style="padding-top:1.5rem">${sl('220px')}<div>Defendant</div></div>
 
   <div></div>
-  <div style="padding-top:1.5rem">${sl('220px')}<div>${attyName()}, Attorney for Defendant</div></div>
+  <div style="padding-top:1.5rem">${sl('220px')}<div><strong>${attyName()}</strong>, Attorney for Defendant</div></div>
 
   <div style="padding-top:1.5rem;font-size:13px;display:flex;align-items:flex-end">
     Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}
@@ -1005,104 +1108,136 @@ function buildMainPV(){
   const isDwi=S.type==='dwi';
   const eff=getEffChgs();
   const pleaCs=eff.filter(c=>S.pleaSel.includes(c.id)||S.pleaSel.includes(String(c.id)));
-  const pleaLbls=pleaCs.map(c=>`Count ${eff.indexOf(c)+1}`).join(' and ');
   const inc=`${S.maxJail} ${S.jailUnit}`;
 
-  let cHtml='',pHtml='';
+  /* ── charge list (italic) ── */
+  let cHtml='';
   eff.forEach((c,n)=>{
     const isLast=n===eff.length-1;
-    cHtml+=`<div class="p-chg">${buildCntHTML(c,n+1,isDwi,false,isLast)}</div>`;
+    cHtml+=`<div class="p-count-i">${buildCntHTML(c,n+1,isDwi,false,isLast)}</div>`;
   });
 
-  // Build plea paragraph — amended count always shows as AMENDED COUNT X
+  /* ── plea list (italic; amended count uses "Amended Count N") ── */
   const amendedIdx=S.amendedCountId!==null?eff.findIndex(c=>String(c.id)===String(S.amendedCountId)):-1;
   const pleaSet=new Set([...pleaCs.map(c=>String(c.id))]);
   if(amendedIdx>=0)pleaSet.add(String(eff[amendedIdx].id));
-
   const pleaLblList=[];
+  let pHtml='';
   if(pleaSet.size){
-    // Collect plea items first so we can mark the last one
     const pleaItems=[];
     eff.forEach((c,n)=>{
       if(!pleaSet.has(String(c.id)))return;
       const isAmend=amendedIdx>=0&&String(c.id)===String(eff[amendedIdx].id);
       pleaItems.push({c,n,isAmend});
-      pleaLblList.push(isAmend?`AMENDED COUNT ${n+1}`:`Count ${n+1}`);
+      pleaLblList.push(isAmend?`Amended Count ${n+1}`:`Count ${n+1}`);
     });
     pleaItems.forEach(({c,n,isAmend},i)=>{
       const isLast=i===pleaItems.length-1;
-      pHtml+=`<div class="p-chg">${buildCntHTML(c,n+1,isDwi,isAmend,isLast)}</div>`;
+      pHtml+=`<div class="p-count-i">${buildCntHTML(c,n+1,isDwi,isAmend,isLast)}</div>`;
     });
   }else{
-    pHtml=`<div class="p-ind" style="margin-top:6px">${ph('[Select plea counts in form]')}</div>`;
+    pHtml=`<div class="p-count">${ph('[Select plea counts above]')}</div>`;
   }
   const pleaLbls2=pleaLblList.join(' and ');
 
-  let para3='';
+  /* ── paragraph 3 ── */
+  let para3body='';
   if(isDwi){
-    para3=`<strong>3.</strong>&ensp;I am pleading guilty to ${pleaLbls2||ph('[COUNT]')} because of the following: ${S.facts||ph('[Enter facts in form]')}`;
+    para3body=`I am pleading guilty to ${pleaLbls2||ph('[COUNT]')} because of the following: ${S.facts||ph('[Enter facts in form]')}`;
   }else{
     const od=S.offDate?fmtShort(S.offDate):'[DATE]';
-    para3=`<strong>3.</strong>&ensp;I am pleading guilty to ${pleaLbls2||ph('[COUNT]')} because on or about <strong>${od}</strong>, within the city of <strong>${S.offCity||'[CITY]'}</strong>, <strong>${S.offCounty||'[COUNTY]'}</strong> County, State of <strong>Minnesota</strong>, I did the following:
-    <div class="p-ind" style="margin-top:8px;white-space:pre-wrap">${S.facts||ph('[Enter facts in form]')}</div>`;
+    para3body=`I am pleading guilty to ${pleaLbls2||ph('[COUNT]')} because on or about <strong>${od}</strong>, within the city of <strong>${S.offCity||'[CITY]'}</strong>, <strong>${S.offCounty||'[COUNTY]'}</strong> County, State of <strong>Minnesota</strong>, I did the following:<div class="p-count" style="white-space:pre-wrap">${S.facts||ph('[Enter facts in form]')}</div>`;
   }
 
-  const sigBlock=isDwi
-    ?`<div>${sl()}<div style="font-size:12px">Defendant</div></div><div>${sl()}<div style="font-size:12px">Date</div></div>`
-    :`<div class="p-sg"><div>${sl()}<div style="font-size:12px">Defendant</div></div><div>${sl()}<div style="font-size:12px">Date</div></div></div>`;
+  /* ── attorney details ── */
+  const _a=getAtty();
+  const attyDisplayName=_a.name||S.attorney;
+  const attyLine1=_a.bar?`<strong>${attyDisplayName}</strong> (${_a.bar})`:`<strong>${attyDisplayName}</strong>`;
+  const attyEmail=_a.email?`<br>${_a.email}`:'';
 
-  const p11=isDwi?`<div class="p-para"><strong>11.</strong>&ensp;Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</div>`:'';
+  /* ── paragraph 11 (DWI only) ── */
+  const p11=isDwi?`<div class="p-para"><span class="p-pn">11.</span><span class="p-pb">Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</span></div>`:'';
 
-  return`
-<div class="p-hdr"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
-<div class="p-hdr"><span>COUNTY OF ${co}</span><span>${dn}</span></div>
-<hr class="p-rule">
-<div class="p-cap">
-  <div class="p-cap-l">
-    <div>State of Minnesota,</div>
-    <div style="padding-left:2.5rem">Plaintiff,</div>
-    <div style="margin:6px 0">vs.</div>
-    <div style="font-weight:700">${nm}</div>
-    <div style="padding-left:2.5rem">Defendant.</div>
-  </div>
-  <div class="p-cap-r">
-    <div style="white-space:nowrap">Case No. ${cn}</div>
-    <div style="margin-top:10px;font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</div>
-  </div>
-</div>
-<hr class="p-rule">
-
-<div class="p-para"><strong>1.</strong>&ensp;I, <strong>${nm}</strong>, DOB <strong>${dob}</strong>, have reviewed the charges against me, and I understand them:${cHtml}</div>
-<div class="p-para"><strong>2.</strong>&ensp;I am pleading guilty to:${pHtml}</div>
-<div class="p-para">${para3}</div>
-<div class="p-para"><strong>4.</strong>&ensp;I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</div>
-<div class="p-para"><strong>5.</strong>&ensp;I understand that I was charged with a <strong>${S.level}</strong>, which carries a maximum sentence of a <strong>${S.maxFine}</strong> fine and/or <strong>${inc}.</strong></div>
-<div class="p-para"><strong>6.</strong>&ensp;I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>${attyName()}</strong>.</div>
-<div class="p-para"><strong>7.</strong>&ensp;I understand that (under the original <strong>${S.level}</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:
-  ${RIGHTS.map((r,i)=>`<div class="p-ind" style="margin-top:4px">${String.fromCharCode(97+i)}. ${r}</div>`).join('')}
-</div>
-<div class="p-para"><strong>8.</strong>&ensp;Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</div>
-<div class="p-para"><strong>9.</strong>&ensp;I am entering my plea of guilty based on the following sentencing agreement:
-  <div class="p-ind" style="margin-top:8px;font-style:italic;font-weight:700;text-decoration:underline">
-    ${S.sentencing||`<span style="color:#9CA3AF;text-decoration:none;font-weight:400;font-style:normal">${ph('[Enter sentencing agreement in form]')}</span>`}
-  </div>
-</div>
-<div class="p-para"><strong>10.</strong>&ensp;I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</div>
-${p11}
-${sigBlock}
-<div style="margin-top:1.5rem;font-size:12px;line-height:1.7">${attyName()} states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
-<div class="p-sg" style="margin-top:1.5rem;align-items:start">
-  <div>${sl('190px')}<div style="font-size:12px;line-height:1.7">${attySigBlock()}</div></div>
-  <div>${sl()}<div style="font-size:12px">Date</div></div>
-</div>
-<div class="p-sg" style="margin-top:1.5rem">
-  <div>${sl('190px')}<div style="font-size:12px">Prosecuting Attorney</div></div>
-  <div>${sl()}<div style="font-size:12px">Date</div></div>
-</div>
-<div class="p-sg" style="margin-top:1.5rem">
-  <div>${sl('190px')}<div style="font-size:12px">Judge of District Court</div></div>
-  <div>${sl()}<div style="font-size:12px">Date</div></div>
+  /* ── defendant signature block (DWI stacked, Standard side-by-side) ── */
+  const defSig=isDwi
+    ?`<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div>
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>`
+    :`<div style="display:flex;gap:0.5in;margin-top:1.5em">
+<div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div></div>
+<div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
 </div>`;
+
+  /* ── prosecutor label: "Prosecutor" for DWI, "Prosecuting Attorney" for Standard ── */
+  const prosLabel=isDwi?'Prosecutor':'Prosecuting Attorney';
+
+  return `
+<div class="p-hdr-row"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
+<div class="p-hdr-row"><span>COUNTY OF ${co}</span><span>${dn}</span></div>
+<hr class="p-rule">
+
+<table class="p-cap">
+  <tr>
+    <td style="width:50%">State of Minnesota,</td>
+    <td style="width:50%;white-space:nowrap">Case No. ${cn}</td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td class="p-cap-indent">Plaintiff,</td>
+    <td></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td>vs.</td>
+    <td style="font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td>${nm},</td>
+    <td></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td class="p-cap-indent">Defendant.</td>
+    <td></td>
+  </tr>
+</table>
+<hr class="p-rule">
+
+<div class="p-para"><span class="p-pn">1.</span><span class="p-pb">I, ${nm}, <strong>DOB ${dob}</strong>, have reviewed the charges against me, and I understand them:${cHtml}</span></div>
+
+<div class="p-para"><span class="p-pn">2.</span><span class="p-pb">I am pleading guilty to:${pHtml}</span></div>
+
+<div class="p-para"><span class="p-pn">3.</span><span class="p-pb">${para3body}</span></div>
+
+<div class="p-para"><span class="p-pn">4.</span><span class="p-pb">I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</span></div>
+
+<div class="p-para"><span class="p-pn">5.</span><span class="p-pb">I understand that I was charged with a <strong>${S.level}</strong>, which carries a maximum sentence of a <strong>${S.maxFine}</strong> fine and/or <strong>${inc}.</strong></span></div>
+
+<div class="p-para"><span class="p-pn">6.</span><span class="p-pb">I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>${attyDisplayName}</strong>.</span></div>
+
+<div class="p-para"><span class="p-pn">7.</span><span class="p-pb">I understand that (under the original <strong>${S.level}</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:<div class="p-count">${RIGHTS.map((r,i)=>`<div${i===0?'':' style="margin-top:0.2em"'}>${String.fromCharCode(97+i)}. ${r}</div>`).join('')}</div></span></div>
+
+<div class="p-para"><span class="p-pn">8.</span><span class="p-pb">Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</span></div>
+
+<div class="p-para"><span class="p-pn">9.</span><span class="p-pb">I am entering my plea of guilty based on the following sentencing agreement:<div class="p-count" style="font-style:italic;font-weight:700;text-decoration:underline">${S.sentencing||`<span style="color:#9CA3AF;text-decoration:none;font-weight:400;font-style:normal">${ph('[Enter sentencing agreement in form]')}</span>`}</div></span></div>
+
+<div class="p-para"><span class="p-pn">10.</span><span class="p-pb">I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</span></div>
+
+${p11}
+
+${defSig}
+
+<div class="p-atty-stmt"><strong>${attyDisplayName}</strong> states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
+
+<div class="p-sig-space"></div><div class="p-sig-line"></div>
+<div class="p-atty-info">${attyLine1}<br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax${attyEmail}</div>
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
+
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">${prosLabel}</div>
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
+
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div>
+<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>`;
 }
 
 /* ═══════════════════════════════════════════════════════
