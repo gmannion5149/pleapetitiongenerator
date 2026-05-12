@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)file:///C:/Users/gerar/Downloads/plea_petition_15.html -->
+<!-- saved from url=(0073)file:///C:/Users/gerar/Downloads/DWI%20Plea%20Petition%20Generator_7.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plea Petition Generator — Gerald Miller P.A.</title>
-<link href="./Plea Petition Generator — Gerald Miller P.A._files/css2" rel="stylesheet">
+<title>DWI Plea Petition Generator — Gerald Miller P.A.</title>
+<link href="./DWI Plea Petition Generator — Gerald Miller P.A._files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -17,6 +17,7 @@
 }
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
 .app{max-width:880px;margin:0 auto;padding:1rem 1rem 3rem}
+.app.preview-mode{max-width:1000px}
 
 /* ── Header ── */
 .hdr{background:var(--navy);border-radius:12px;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
@@ -102,9 +103,40 @@ textarea{resize:vertical;line-height:1.55}
 .drv-link{font-size:13px;color:var(--blue);text-decoration:none}
 .drv-link:hover{text-decoration:underline}
 
-/* ── Petition document ── */
-.petition{background:#fff;border:1px solid var(--border);border-radius:12px;padding:0.75in 1in;font-family:'Times New Roman',Times,serif;font-size:12pt;line-height:1.15;color:#111;max-height:76vh;overflow-y:auto;outline:none}
-.petition:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+/* ── Petition pages container ── */
+#petition-doc{outline:none}
+
+/* Each rendered page is a letter-sized sheet with 1in margins all around */
+.page{
+  width:8.5in;
+  height:11in;
+  background:#fff;
+  font-family:'Times New Roman',Times,serif;
+  font-size:12pt;
+  line-height:1.15;
+  color:#111;
+  margin:0 auto 0.5in;
+  padding:1in;
+  box-sizing:border-box;
+  box-shadow:0 4px 18px rgba(0,0,0,0.12);
+  outline:none;
+  position:relative;
+  overflow:hidden;
+}
+.page:last-child{margin-bottom:0}
+.page:focus{box-shadow:0 4px 18px rgba(0,0,0,0.12),0 0 0 3px rgba(37,99,235,.15)}
+
+/* Subtle page-number badge in top-right corner of each preview page */
+.page::before{
+  content:'Page ' attr(data-page) ' of ' attr(data-of);
+  position:absolute;
+  top:-1.3em;
+  right:0;
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  color:#64748b;
+  letter-spacing:0.04em;
+}
 
 /* Header rows: two bold lines with 1 line of space between */
 .p-hdr-row{display:flex;justify-content:space-between;font-weight:700;margin-bottom:1em}
@@ -132,7 +164,7 @@ textarea{resize:vertical;line-height:1.55}
 .p-count-i strong{font-style:normal;font-weight:700}
 
 /* Signature blocks */
-.p-sig-space{height:1.1em;margin-top:0.8em}
+.p-sig-space{height:1.1em;margin-top:1.15em}
 .p-sig-line{border-bottom:1px solid #111;width:2.5in}
 .p-sig-label{margin-top:1px;line-height:1.15}
 .p-atty-info{margin-top:0;line-height:1.15}
@@ -143,13 +175,25 @@ textarea{resize:vertical;line-height:1.55}
 
 @media print{
   .pv-bar,.hdr,#fv{display:none!important}
-  .app{max-width:100%;padding:0}
-  .petition{max-height:none;border:none;border-radius:0;padding:1in;overflow:visible;font-size:12pt}
-  body{background:#fff}
-  @page{margin:1in;size:letter}
+  html,body{margin:0!important;padding:0!important;background:#fff!important}
+  .app,#pv,#petition-doc{max-width:none!important;padding:0!important;margin:0!important}
+  .page{
+    width:8.5in!important;
+    height:11in!important;
+    margin:0!important;
+    padding:1in!important;
+    box-sizing:border-box!important;
+    box-shadow:none!important;
+    overflow:hidden!important;
+    page-break-after:always;
+    break-after:page;
+  }
+  .page:last-child{page-break-after:auto;break-after:auto}
+  .page::before{display:none}
+  @page{size:letter;margin:0}
 }
-@media(max-width:600px){
-  .petition{padding:0.5in;font-size:11pt}
+@media screen and (max-width:900px){
+  .page{width:100%;padding:0.5in}
 }
 </style>
 </head>
@@ -206,7 +250,7 @@ textarea{resize:vertical;line-height:1.55}
         <label>Client name</label>
         <input id="s-name" oninput="S.clientName=this.value" placeholder="Full legal name">
       </div>
-      <div class="f1" id="dob-wrap">
+      <div class="f1" id="dob-wrap" style="">
         <label>Date of birth</label>
         <input type="date" id="s-dob" oninput="S.clientDob=this.value">
       </div>
@@ -225,7 +269,7 @@ textarea{resize:vertical;line-height:1.55}
     <div style="flex:0 0 auto">
       <label>Number of counts</label>
       <select onchange="setCountNum(+this.value)" style="width:auto;min-width:80px">
-        <option>1</option><option selected="">2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+        <option selected="">1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
       </select>
     </div>
   </div>
@@ -240,7 +284,7 @@ textarea{resize:vertical;line-height:1.55}
       <select onchange="setChgType(1,this.value)">
         <option value="">— Select charge —</option>
         <optgroup label="Alcohol">
-          <option value=".08" selected="">.08 or More</option>
+          <option value=".08">.08 or More</option>
           <option value="UI">Under the Influence</option>
           <option value="R">Refusal</option>
         </optgroup>
@@ -262,7 +306,7 @@ textarea{resize:vertical;line-height:1.55}
       <label>With reference to</label>
       <select onchange="setRefDeg(1,this.value)">
         <option value="">— None —</option>
-        <option value="4th" selected="">4th Degree</option>
+        <option value="4th">4th Degree</option>
         <option value="3rd">3rd Degree</option>
         <option value="2nd">2nd Degree</option>
         <option value="1st">1st Degree</option>
@@ -272,74 +316,17 @@ textarea{resize:vertical;line-height:1.55}
 
   <div style="margin-bottom:8px">
     <label>Description</label>
-    <textarea rows="2" oninput="updChg(1,&#39;desc&#39;,this.value)" placeholder="Auto-filled from charge selection above">Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving</textarea>
+    <textarea rows="2" oninput="updChg(1,&#39;desc&#39;,this.value)" placeholder="Auto-filled from charge selection above"></textarea>
   </div>
   <div class="row" style="margin-bottom:4px">
     <div class="f1">
       <label>Charge statute</label>
-      <input value="169A.20 subd. 1(5)" oninput="updChg(1,&#39;statute&#39;,this.value)" placeholder="auto-filled">
+      <input value="" oninput="updChg(1,&#39;statute&#39;,this.value)" placeholder="auto-filled">
     </div>
     
     <div class="f1">
       <label>Reference statute</label>
-      <input value="169A.27 subd. 2" oninput="updChg(1,&#39;ref&#39;,this.value)" placeholder="e.g., 169A.27 subd. 2">
-    </div>
-  </div>
-</div>
-<div class="chg-card" id="cc-2">
-  <div class="chg-hdr">
-    <span class="chg-lbl">Count 2</span>
-  </div>
-
-  <div class="row" style="margin-bottom:4px">
-    <div class="f2">
-      <label>Charge</label>
-      <select onchange="setChgType(2,this.value)">
-        <option value="">— Select charge —</option>
-        <optgroup label="Alcohol">
-          <option value=".08">.08 or More</option>
-          <option value="UI" selected="">Under the Influence</option>
-          <option value="R">Refusal</option>
-        </optgroup>
-        <optgroup label="Controlled Substances">
-          <option value="cs-imp">Controlled Substance (Impaired)</option>
-          <option value="intox">Intoxicating Substance</option>
-          <option value="cs-cont">Controlled Substance (Contains)</option>
-          <option value="cannabis">Cannabis</option>
-        </optgroup>
-        <optgroup label="Other">
-          <option value="ref">Reference Statute</option>
-          <option value="careless">Careless Driving</option>
-          <option value="other">Other</option>
-        </optgroup>
-      </select>
-    </div>
-    
-    <div class="f1">
-      <label>With reference to</label>
-      <select onchange="setRefDeg(2,this.value)">
-        <option value="">— None —</option>
-        <option value="4th" selected="">4th Degree</option>
-        <option value="3rd">3rd Degree</option>
-        <option value="2nd">2nd Degree</option>
-        <option value="1st">1st Degree</option>
-      </select>
-    </div>
-  </div>
-
-  <div style="margin-bottom:8px">
-    <label>Description</label>
-    <textarea rows="2" oninput="updChg(2,&#39;desc&#39;,this.value)" placeholder="Auto-filled from charge selection above">Operating a Motor Vehicle While Under the Influence of Alcohol</textarea>
-  </div>
-  <div class="row" style="margin-bottom:4px">
-    <div class="f1">
-      <label>Charge statute</label>
-      <input value="169A.20 subd. 1(1)" oninput="updChg(2,&#39;statute&#39;,this.value)" placeholder="auto-filled">
-    </div>
-    
-    <div class="f1">
-      <label>Reference statute</label>
-      <input value="169A.27 subd. 2" oninput="updChg(2,&#39;ref&#39;,this.value)" placeholder="e.g., 169A.27 subd. 2">
+      <input value="" oninput="updChg(1,&#39;ref&#39;,this.value)" placeholder="e.g., 169A.27 subd. 2">
     </div>
   </div>
 </div></div>
@@ -348,15 +335,10 @@ textarea{resize:vertical;line-height:1.55}
   <div class="card">
     <div class="sec-hdr">Plea — count(s) pleading guilty to</div>
     <div id="plea-sec"><div style="margin-bottom:12px;padding:10px;border-radius:8px;background:#f9fafb;border:1.5px solid var(--border)"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-      <span style="font-size:12px;font-weight:500;color:var(--muted)">Careless Driving amendment:</span><button class="qbtn" onclick="clickCareless()">Careless Driving</button></div></div><div class="plea-row plea-on" onclick="togPlea(&#39;1&#39;)">
-      <input type="checkbox" class="plea-cb" checked="" onclick="event.stopPropagation();togPlea(&#39;1&#39;)">
+      <span style="font-size:12px;font-weight:500;color:var(--muted)">Careless Driving amendment:</span><button class="qbtn" onclick="clickCareless()">Careless Driving</button></div></div><div class="plea-row plea-off" onclick="togPlea(&#39;1&#39;)">
+      <input type="checkbox" class="plea-cb" onclick="event.stopPropagation();togPlea(&#39;1&#39;)">
       <span class="plea-txt">
-        <strong>Count 1:</strong> Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving<span style="color:var(--muted)"> — Minn. Stat. §169A.20 subd. 1(5)</span>
-      </span>
-    </div><div class="plea-row plea-off" onclick="togPlea(&#39;2&#39;)">
-      <input type="checkbox" class="plea-cb" onclick="event.stopPropagation();togPlea(&#39;2&#39;)">
-      <span class="plea-txt">
-        <strong>Count 2:</strong> Operating a Motor Vehicle While Under the Influence of Alcohol<span style="color:var(--muted)"> — Minn. Stat. §169A.20 subd. 1(1)</span>
+        <strong>Count 1:</strong> (no description entered)<span style="color:var(--muted)"></span>
       </span>
     </div></div>
   </div>
@@ -411,19 +393,21 @@ textarea{resize:vertical;line-height:1.55}
     <button class="btn" onclick="showForm()">← Back to form</button>
     <button class="btn btn-navy" id="btn-drv" onclick="pushDrive()">Push to Google Drive</button>
     <button class="btn" id="btn-cpy" onclick="copyTxt()">Copy to clipboard</button>
-    <button class="btn" onclick="window.print()">🖨 Print</button>
+    <button class="btn" onclick="window.print()" title="In Chrome&#39;s print dialog, set Margins to &#39;None&#39; so the petition&#39;s built-in 1-inch margins render correctly">🖨 Print</button>
+    <button class="btn" onclick="paginatePreview()" title="Recalculate page breaks after edits">↻ Refresh pages</button>
     <span style="font-size:12px;color:var(--muted);margin-left:4px">✏️ Click petition to edit</span>
+    <span style="font-size:11px;color:var(--muted);margin-left:auto;font-style:italic">When printing: set Margins to "None"</span>
     <span id="drv-status"></span>
   </div>
-  <div class="petition" id="petition-doc" contenteditable="true" spellcheck="true">
+  <div id="petition-doc"><div class="page" data-page="1" data-of="1" contenteditable="true" spellcheck="true">
 <div class="p-hdr-row"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
-<div class="p-hdr-row"><span>COUNTY OF ANOKA</span><span>TENTH JUDICIAL DISTRICT</span></div>
+<div class="p-hdr-row"><span>COUNTY OF <span class="p-ph">[COUNTY]</span></span><span><span class="p-ph">[DISTRICT]</span> JUDICIAL DISTRICT</span></div>
 <hr class="p-rule">
 
 <table class="p-cap">
   <tbody><tr>
     <td style="width:50%">State of Minnesota,</td>
-    <td style="width:50%;white-space:nowrap">Case No. 02-CR-26-100</td>
+    <td style="width:50%;white-space:nowrap">District Court File No. <span class="p-ph">[FILE NO]</span></td>
   </tr>
   <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
   <tr>
@@ -432,12 +416,12 @@ textarea{resize:vertical;line-height:1.55}
   </tr>
   <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
   <tr>
-    <td>vs.</td>
-    <td style="font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</td>
+    <td>-vs-</td>
+    <td style="font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY TO<br>PETTY MISDEMEANOR</td>
   </tr>
   <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
   <tr>
-    <td>Jimm Bob,</td>
+    <td><span class="p-ph">[CLIENT]</span>,</td>
     <td></td>
   </tr>
   <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
@@ -448,42 +432,23 @@ textarea{resize:vertical;line-height:1.55}
 </tbody></table>
 <hr class="p-rule">
 
-<div class="p-para"><span class="p-pn">1.</span><span class="p-pb">I, Jimm Bob, <strong>DOB 05/05/1991</strong>, have reviewed the charges against me, and I understand them:<div class="p-count-i"><strong>Count 1:</strong> Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving, a violation of Minnesota Statute 169A.20 subd. 1(5) with reference to Minnesota Statute 169A.27 subd. 2;</div><div class="p-count-i"><strong>Count 2:</strong> Operating a Motor Vehicle While Under the Influence of Alcohol, a violation of Minnesota Statute 169A.20 subd. 1(1) with reference to Minnesota Statute 169A.27 subd. 2.</div></span></div>
+<div style="margin-top:1.8em;line-height:1.4">The State of Minnesota agrees to a stay of adjudication on the petty misdemeanor charge in the above-entitled matter, subject to the Court's approval. The following conditions shall apply:</div>
 
-<div class="p-para"><span class="p-pn">2.</span><span class="p-pb">I am pleading guilty to:<div class="p-count-i"><strong>Count 1:</strong> Driving While Impaired, Operating a Motor Vehicle with a Blood Alcohol Concentration of .08 or More within 2 Hours of Driving, a violation of Minnesota Statute 169A.20 subd. 1(5) with reference to Minnesota Statute 169A.27 subd. 2.</div></span></div>
+<div style="margin-top:1.8em">
+  <div style="margin-bottom:0.6em"><strong>1. TERMS</strong></div>
+  <div style="padding-left:0.5in;white-space:pre-wrap;line-height:1.4"><span class="p-ph">[Enter terms in form]</span></div>
+</div>
 
-<div class="p-para"><span class="p-pn">3.</span><span class="p-pb">I am pleading guilty to Count 1 because of the following: On or about January 5, 2026, in the city of Anoka, Anoka County, Minnesota: I was driving a motor vehicle when I was stopped by law enforcement. Prior to driving, I had consumed alcohol. While speaking with the officer, they noticed signs that I may be impaired. I was then asked to step out of the vehicle to perform a series of field sobriety tests. I performed poorly on those tests and was subsequently arrested on suspicion of driving while impaired. While at the station, I was read the Minnesota Breath Test Advisory and agreed to take a breath test. The results of that test showed my Blood Alcohol Concentration to be .08 or more, and that test was taken within 2 hours of driving.</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;column-gap:0.5in;margin-top:3em">
+  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Prosecutor</div></div>
+  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div></div>
 
-<div class="p-para"><span class="p-pn">4.</span><span class="p-pb">I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</span></div>
+  <div></div>
+  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label"><strong>Gerard W. Mannion</strong> (404006)<br>Attorney for Defendant</div></div>
 
-<div class="p-para"><span class="p-pn">5.</span><span class="p-pb">I understand that I was charged with a <strong>Misdemeanor</strong>, which carries a maximum sentence of a <strong>$1,000</strong> fine and/or <strong>90 days in jail.</strong></span></div>
-
-<div class="p-para"><span class="p-pn">6.</span><span class="p-pb">I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>Kyle J. Dreger</strong>.</span></div>
-
-<div class="p-para"><span class="p-pn">7.</span><span class="p-pb">I understand that (under the original <strong>Misdemeanor</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:<div class="p-count"><div>a. the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;</div><div style="margin-top:0.2em">b. the right to confront and cross-examine all witnesses against me;</div><div style="margin-top:0.2em">c. the right to remain silent or to testify for myself;</div><div style="margin-top:0.2em">d. the right to subpoena witnesses to appear on my behalf;</div><div style="margin-top:0.2em">e. the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.</div></div></span></div>
-
-<div class="p-para"><span class="p-pn">8.</span><span class="p-pb">Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</span></div>
-
-<div class="p-para"><span class="p-pn">9.</span><span class="p-pb">I am entering my plea of guilty based on the following sentencing agreement:<div class="p-count" style="font-style:italic;font-weight:700;text-decoration:underline">Plea to count 1. </div></span></div>
-
-<div class="p-para"><span class="p-pn">10.</span><span class="p-pb">I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</span></div>
-
-<div class="p-para"><span class="p-pn">11.</span><span class="p-pb">Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</span></div>
-
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div>
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
-
-<div class="p-atty-stmt"><strong>Kyle J. Dreger</strong> states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
-
-<div class="p-sig-space"></div><div class="p-sig-line"></div>
-<div class="p-atty-info"><strong>Kyle J. Dreger</strong><br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax</div>
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
-
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Prosecutor</div>
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
-
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div>
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
+  <div style="margin-top:1.5em;align-self:end">Dated this ___ day of _________, 202_</div>
+  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div></div>
+</div></div></div>
 </div>
 
 </div><!-- .app -->
@@ -539,10 +504,10 @@ const RSC={
 
 const ATTORNEYS={
   'GWM':{name:'Gerard W. Mannion',   bar:'404006', email:'gmannion@geraldmiller.com'},
-  'ANB':{name:'Annaliese N. Barnes', bar:'',       email:''},
-  'KJD':{name:'Kyle J. Dreger',      bar:'',       email:''},
-  'BDH':{name:'Brodie D. Hacken',    bar:'',       email:''},
-  'GAM':{name:'Gerald A. Miller',    bar:'',       email:''},
+  'ANB':{name:'Annaliese N. Barnes', bar:'504968', email:''},
+  'KJD':{name:'Kyle J. Dreger',      bar:'396858', email:''},
+  'BDH':{name:'Brodie D. Hacken',    bar:'391988', email:''},
+  'GAM':{name:'Gerald A. Miller',    bar:'73180',  email:''},
 };
 
 const PENALTIES={
@@ -1032,11 +997,140 @@ function syncFields(){
 function showPreview(){
   syncFields();
   $('fv').style.display='none';$('pv').style.display='block';
+  document.querySelector('.app').classList.add('preview-mode');
   $('drv-status').innerHTML='';
   $('btn-drv').textContent='Push to Google Drive';$('btn-drv').disabled=false;
-  $('petition-doc').innerHTML=buildPvHTML();
+  paginatePreview(buildPvHTML());
+  setupEditAutoflow();
 }
-function showForm(){$('pv').style.display='none';$('fv').style.display='block'}
+function showForm(){
+  $('pv').style.display='none';$('fv').style.display='block';
+  document.querySelector('.app').classList.remove('preview-mode');
+}
+
+/* ── Auto-reflow on edit ──
+   Pages are locked at exactly 11in tall (overflow:hidden). When user types past
+   the bottom of a page, we detect it and re-paginate so content jumps to the
+   next page. Caret position is preserved by counting text-offset within the
+   whole petition, then walking text nodes after rebuild to restore it. */
+let _editListenerAttached=false;
+let _paginateTimer=null;
+let _caretOffset=null;
+
+function setupEditAutoflow(){
+  if(_editListenerAttached)return;
+  const c=$('petition-doc');
+  c.addEventListener('input',schedulePaginate);
+  _editListenerAttached=true;
+}
+
+function schedulePaginate(){
+  captureCaretOffset();
+  clearTimeout(_paginateTimer);
+  _paginateTimer=setTimeout(()=>{
+    paginatePreview();
+    restoreCaretOffset();
+  },300);
+}
+
+function captureCaretOffset(){
+  const root=$('petition-doc');
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0){_caretOffset=null;return}
+  const anchor=sel.anchorNode;
+  if(!anchor||!root.contains(anchor)){_caretOffset=null;return}
+  try{
+    const r=document.createRange();
+    r.selectNodeContents(root);
+    r.setEnd(anchor,sel.anchorOffset);
+    _caretOffset=r.toString().length;
+  }catch(e){_caretOffset=null}
+}
+
+function restoreCaretOffset(){
+  if(_caretOffset===null)return;
+  const root=$('petition-doc');
+  let remaining=_caretOffset;
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
+  let node;
+  while((node=walker.nextNode())){
+    const len=node.nodeValue.length;
+    if(remaining<=len){
+      try{
+        const range=document.createRange();
+        range.setStart(node,remaining);
+        range.collapse(true);
+        const sel=window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        // Bring containing page into view + focus it
+        const page=node.parentElement&&node.parentElement.closest('.page');
+        if(page){
+          page.focus({preventScroll:true});
+          page.scrollIntoView({block:'nearest',behavior:'smooth'});
+        }
+      }catch(e){}
+      return;
+    }
+    remaining-=len;
+  }
+}
+
+/* Auto-paginate: distributes top-level blocks into letter-sized .page
+   containers. Each .page is 8.5×11in with 1in padding (matching print).
+   Pure measurement-based — content fits exactly the same in preview and print. */
+function paginatePreview(htmlOverride){
+  const c=$('petition-doc');
+  let html;
+  if(htmlOverride!==undefined){
+    html=htmlOverride;
+  }else{
+    // Repagination: gather current content from existing pages
+    const chunks=[];
+    c.querySelectorAll('.page').forEach(p=>chunks.push(p.innerHTML));
+    html=chunks.join('');
+  }
+
+  // PM petition is one page by design
+  if(S.type==='pm'){
+    c.innerHTML=`<div class="page" data-page="1" data-of="1" contenteditable="true" spellcheck="true">${html}</div>`;
+    return;
+  }
+
+  // Render into a hidden measurement page with identical CSS context
+  const m=document.createElement('div');
+  m.className='page';
+  Object.assign(m.style,{position:'absolute',left:'-99999px',top:'0',visibility:'hidden',margin:'0',boxShadow:'none',height:'auto',overflow:'visible'});
+  m.innerHTML=html;
+  document.body.appendChild(m);
+
+  // Usable content area = 11in - 2*1in padding = 9in = 864 CSS px at 96dpi
+  const USABLE=9*96;
+  const blocks=Array.from(m.children);
+  const pages=[[]];
+  let h=0;
+
+  blocks.forEach(b=>{
+    const r=b.getBoundingClientRect();
+    const cs=getComputedStyle(b);
+    const mt=parseFloat(cs.marginTop)||0;
+    const mb=parseFloat(cs.marginBottom)||0;
+    const bh=r.height+mb+(pages[pages.length-1].length===0?0:mt);
+    if(h+bh>USABLE && pages[pages.length-1].length>0){
+      pages.push([]);
+      h=0;
+    }
+    pages[pages.length-1].push(b.outerHTML);
+    h+=bh;
+  });
+
+  document.body.removeChild(m);
+
+  const total=pages.length;
+  c.innerHTML=pages.map((g,i)=>
+    `<div class="page" data-page="${i+1}" data-of="${total}" contenteditable="true" spellcheck="true">${g.join('')}</div>`
+  ).join('');
+}
 
 function buildPvHTML(){return S.type==='pm'?buildPmPV():buildMainPV()}
 
@@ -1044,46 +1138,61 @@ function buildPmPV(){
   const pd=fmtPm(S.pmDate);
   const co=S.county?S.county.toUpperCase():ph('[COUNTY]');
   const dist=CD[S.county]||'';
-  const dn=DN[dist]||ph('[DISTRICT]');   // e.g. TENTH, not 10th
+  const dn=DN[dist]||ph('[DISTRICT]');
   const cn=S.caseNumber||ph('[FILE NO]');
   const nm=S.clientName||ph('[CLIENT]');
+  const _a=getAtty();
+  const attyDisplayName=_a.name||S.attorney;
+  const attyNameLine=_a.bar?`<strong>${attyDisplayName}</strong> (${_a.bar})`:`<strong>${attyDisplayName}</strong>`;
   return`
-<div class="p-hdr" style="grid-template-columns:1fr 1fr;display:grid;margin-bottom:6px">
-  <div><strong>STATE OF MINNESOTA</strong><br><strong>COUNTY OF ${co}</strong></div>
-  <div style="text-align:right"><strong>DISTRICT COURT</strong><br><strong>${dn} JUDICIAL DISTRICT</strong></div>
-</div>
-<div class="p-dbl"></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:12px;align-items:start">
-  <div>
-    <div><strong>STATE OF MINNESOTA,</strong></div>
-    <div style="padding-left:3rem">Plaintiff,</div>
-    <div style="margin:4px 0">-vs-</div>
-    <div><strong>${nm},</strong></div>
-    <div style="padding-left:3rem">Defendant.</div>
-  </div>
-  <div>
-    <div style="font-weight:700;text-align:center">PETITION TO ENTER PLEA OF GUILTY<br>TO PETTY MISDEMEANOR</div>
-    <div style="margin-top:12px">District Court File No. ${cn}</div>
-  </div>
-</div>
+<div class="p-hdr-row"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
+<div class="p-hdr-row"><span>COUNTY OF ${co}</span><span>${dn} JUDICIAL DISTRICT</span></div>
 <hr class="p-rule">
-<div class="p-para">The State of Minnesota agrees to a stay of adjudication on the petty misdemeanor charge in the above-entitled matter, subject to the Court's approval. The following conditions shall apply:</div>
-<div style="padding-left:2rem;margin-bottom:2rem">
-  <strong>1. TERMS</strong>
-  <div style="margin-top:6px;white-space:pre-wrap">${S.terms||ph('[Enter terms above]')}</div>
+
+<table class="p-cap">
+  <tr>
+    <td style="width:50%">State of Minnesota,</td>
+    <td style="width:50%;white-space:nowrap">District Court File No. ${cn}</td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td class="p-cap-indent">Plaintiff,</td>
+    <td></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td>-vs-</td>
+    <td style="font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY TO<br>PETTY MISDEMEANOR</td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td>${nm},</td>
+    <td></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td class="p-cap-indent">Defendant.</td>
+    <td></td>
+  </tr>
+</table>
+<hr class="p-rule">
+
+<div style="margin-top:1.8em;line-height:1.4">The State of Minnesota agrees to a stay of adjudication on the petty misdemeanor charge in the above-entitled matter, subject to the Court's approval. The following conditions shall apply:</div>
+
+<div style="margin-top:1.8em">
+  <div style="margin-bottom:0.6em"><strong>1.&emsp;TERMS</strong></div>
+  <div style="padding-left:0.5in;white-space:pre-wrap;line-height:1.4">${S.terms||ph('[Enter terms in form]')}</div>
 </div>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem">
-  <div style="padding-top:1.5rem">${sl('220px')}<div>Prosecutor</div></div>
-  <div style="padding-top:1.5rem">${sl('220px')}<div>Defendant</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;column-gap:0.5in;margin-top:3em">
+  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Prosecutor</div></div>
+  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div></div>
 
   <div></div>
-  <div style="padding-top:1.5rem">${sl('220px')}<div><strong>${attyName()}</strong>, Attorney for Defendant</div></div>
+  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">${attyNameLine}<br>Attorney for Defendant</div></div>
 
-  <div style="padding-top:1.5rem;font-size:13px;display:flex;align-items:flex-end">
-    Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}
-  </div>
-  <div style="padding-top:1.5rem">${sl('220px')}<div>Judge of District Court</div></div>
+  <div style="margin-top:1.5em;align-self:end">Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}</div>
+  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div></div>
 </div>`;
 }
 
