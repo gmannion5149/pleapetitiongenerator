@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0073)file:///C:/Users/gerar/Downloads/DWI%20Plea%20Petition%20Generator_8.html -->
+<!-- saved from url=(0074)file:///C:/Users/gerar/Downloads/DWI%20Plea%20Petition%20Generator_14.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DWI Plea Petition Generator — Gerald Miller P.A.</title>
-<link href="./111111_files/css2" rel="stylesheet">
+<link href="./Updated Plea Petition Generator_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -201,7 +201,7 @@ textarea{resize:vertical;line-height:1.55}
 <div class="app">
 
 <!-- ═══ FORM VIEW ═══ -->
-<div id="fv" style="display: block;">
+<div id="fv">
 
   <div style="text-align:center;padding:.5rem 0 .75rem">
     <span style="font-size:22px;font-weight:700;color:var(--navy);letter-spacing:-.01em">Plea Petition Generator</span>
@@ -256,7 +256,37 @@ textarea{resize:vertical;line-height:1.55}
       </div>
       <div class="f1">
         <label id="lbl-cn">Case number</label>
-        <input id="s-caseno" oninput="S.caseNumber=this.value" placeholder="27-CR-25-00000">
+        <input id="s-caseno" oninput="onCaseNoInput(this)" placeholder="27-CR-25-000000">
+      </div>
+    </div>
+    <div class="row" style="margin-top:6px">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--muted)">
+        <input type="checkbox" id="s-addl" onchange="S.showAddlClient=this.checked;$(&#39;addl-client-wrap&#39;).style.display=this.checked?&#39;block&#39;:&#39;none&#39;">
+        Additional client information
+      </label>
+    </div>
+    <div id="addl-client-wrap" style="display:none;margin-top:8px">
+      <div class="row">
+        <div class="f2">
+          <label>Street address</label>
+          <input id="s-cstreet" oninput="S.clientStreet=this.value" placeholder="123 Main St">
+        </div>
+      </div>
+      <div class="row">
+        <div class="f2">
+          <label>City, State, Zip</label>
+          <input id="s-ccsz" oninput="S.clientCityStateZip=this.value" placeholder="Minneapolis, MN 55401">
+        </div>
+      </div>
+      <div class="row">
+        <div class="f1">
+          <label>Client phone</label>
+          <input id="s-cphone" oninput="onPhoneInput(this)" placeholder="(612) 555-1234">
+        </div>
+        <div class="f1">
+          <label>Client email</label>
+          <input id="s-cemail" oninput="S.clientEmail=this.value" placeholder="client@example.com">
+        </div>
       </div>
     </div>
   </div>
@@ -365,7 +395,7 @@ textarea{resize:vertical;line-height:1.55}
           <option selected="">Misdemeanor</option><option>Gross Misdemeanor</option><option>Felony</option>
         </select>
       </div>
-      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="$1,000" oninput="S.maxFine=this.value" placeholder="$1,000"></div>
+      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="$1,000" oninput="onFineInput(this)" placeholder="$1,000"></div>
       <div class="f1"><label>Maximum incarceration</label><input id="f-jail" value="90" oninput="S.maxJail=this.value" placeholder="90"></div>
       <div class="f1"><label>Unit</label>
         <select onchange="S.jailUnit=this.value">
@@ -388,7 +418,7 @@ textarea{resize:vertical;line-height:1.55}
 </div>
 
 <!-- ═══ PREVIEW VIEW ═══ -->
-<div id="pv" style="display: none;">
+<div id="pv">
   <div class="pv-bar">
     <button class="btn" onclick="showForm()">← Back to form</button>
     <button class="btn btn-navy" id="btn-drv" onclick="pushDrive()">Push to Google Drive</button>
@@ -399,32 +429,7 @@ textarea{resize:vertical;line-height:1.55}
     <span style="font-size:11px;color:var(--muted);margin-left:auto;font-style:italic">When printing: set Margins to "None"</span>
     <span id="drv-status"></span>
   </div>
-  <div id="petition-doc"><div class="page" data-page="1" data-of="3" contenteditable="true" spellcheck="true"><div class="p-hdr-row"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div><div class="p-hdr-row"><span>COUNTY OF <span class="p-ph">[COUNTY]</span></span><span><span class="p-ph">[DISTRICT] JUDICIAL DISTRICT</span></span></div><hr class="p-rule"><table class="p-cap">
-  <tbody><tr>
-    <td style="width:50%">State of Minnesota,</td>
-    <td style="width:50%;white-space:nowrap">Case No. <span class="p-ph">[CASE NO]</span></td>
-  </tr>
-  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
-  <tr>
-    <td class="p-cap-indent">Plaintiff,</td>
-    <td></td>
-  </tr>
-  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
-  <tr>
-    <td>vs.</td>
-    <td style="font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</td>
-  </tr>
-  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
-  <tr>
-    <td><span class="p-ph">[CLIENT NAME]</span>,</td>
-    <td></td>
-  </tr>
-  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
-  <tr>
-    <td class="p-cap-indent">Defendant.</td>
-    <td></td>
-  </tr>
-</tbody></table><hr class="p-rule"><div class="p-para"><span class="p-pn">1.</span><span class="p-pb">I, <span class="p-ph">[CLIENT NAME]</span>, <strong>DOB <span class="p-ph">[DOB]</span></strong>, have reviewed the charges against me, and I understand them:<div class="p-count-i"><strong>Count 1:</strong> .</div></span></div><div class="p-para"><span class="p-pn">2.</span><span class="p-pb">I am pleading guilty to:<div class="p-count"><span class="p-ph">[Select plea counts above]</span></div></span></div><div class="p-para"><span class="p-pn">3.</span><span class="p-pb">I am pleading guilty to <span class="p-ph">[COUNT]</span> because of the following: <span class="p-ph">[Enter facts in form]</span></span></div><div class="p-para"><span class="p-pn">4.</span><span class="p-pb">I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</span></div><div class="p-para"><span class="p-pn">5.</span><span class="p-pb">I understand that I was charged with a <strong>Misdemeanor</strong>, which carries a maximum sentence of a <strong>$1,000</strong> fine and/or <strong>90 days in jail.</strong></span></div><div class="p-para"><span class="p-pn">6.</span><span class="p-pb">I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>Gerard W. Mannion</strong>.</span></div></div><div class="page" data-page="2" data-of="3" contenteditable="true" spellcheck="true"><div class="p-para"><span class="p-pn">7.</span><span class="p-pb">I understand that (under the original <strong>Misdemeanor</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:<div class="p-count"><div>a. the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;</div><div style="margin-top:0.2em">b. the right to confront and cross-examine all witnesses against me;</div><div style="margin-top:0.2em">c. the right to remain silent or to testify for myself;</div><div style="margin-top:0.2em">d. the right to subpoena witnesses to appear on my behalf;</div><div style="margin-top:0.2em">e. the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.</div></div></span></div><div class="p-para"><span class="p-pn">8.</span><span class="p-pb">Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</span></div><div class="p-para"><span class="p-pn">9.</span><span class="p-pb">I am entering my plea of guilty based on the following sentencing agreement:<div class="p-count" style="font-style:italic;font-weight:700;text-decoration:underline"><span style="color:#9CA3AF;text-decoration:none;font-weight:400;font-style:normal"><span class="p-ph">[Enter sentencing agreement in form]</span></span></div></span></div><div class="p-para"><span class="p-pn">10.</span><span class="p-pb">I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</span></div><div class="p-para"><span class="p-pn">11.</span><span class="p-pb">Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</span></div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div><div class="p-atty-stmt"><strong>Gerard W. Mannion</strong> states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div><div class="p-sig-space"></div><div class="p-sig-line"></div></div><div class="page" data-page="3" data-of="3" contenteditable="true" spellcheck="true"><div class="p-atty-info"><strong>Gerard W. Mannion</strong> (404006)<br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax<br>gmannion@geraldmiller.com</div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Prosecutor</div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div></div>
+  <div id="petition-doc"></div>
 </div>
 
 </div><!-- .app -->
@@ -507,6 +512,7 @@ const S={
   type:'dwi',
   attorney:'GWM',
   clientName:'',county:'',caseNumber:'',clientDob:'',
+  clientStreet:'',clientCityStateZip:'',clientPhone:'',clientEmail:'',showAddlClient:false,
   charges:[{id:1,desc:'',statute:'',ref:'',ct:null,rd:null,rscDeg:'4th'}],
   pleaSel:[],
   rscOn:false,rscDeg:'4th',
@@ -795,7 +801,7 @@ function renderTF(){
           ${['Misdemeanor','Gross Misdemeanor','Felony'].map(l=>`<option${S.level===l?' selected':''}>${l}</option>`).join('')}
         </select>
       </div>
-      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="${esc(S.maxFine)}" oninput="S.maxFine=this.value" placeholder="$1,000" /></div>
+      <div class="f1"><label>Maximum fine</label><input id="f-fine" value="${esc(S.maxFine)}" oninput="onFineInput(this)" placeholder="$1,000" /></div>
       <div class="f1"><label>Maximum incarceration</label><input id="f-jail" value="${esc(S.maxJail)}" oninput="S.maxJail=this.value" placeholder="90" /></div>
       <div class="f1"><label>Unit</label>
         <select onchange="S.jailUnit=this.value">
@@ -965,10 +971,54 @@ function syncFields(){
   const g=(id,k)=>{const e=$(id);if(e)S[k]=e.value};
   g('s-atty','attorney');
   g('s-name','clientName');g('s-dob','clientDob');g('s-caseno','caseNumber');g('s-county','county');
+  g('s-cstreet','clientStreet');g('s-ccsz','clientCityStateZip');g('s-cphone','clientPhone');g('s-cemail','clientEmail');
   g('f-od','offDate');g('f-oc','offCity');g('f-oco','offCounty');g('f-facts','facts');
   g('f-fine','maxFine');g('f-jail','maxJail');g('f-sent','sentencing');
   g('f-terms','terms');g('f-pmd','pmDate');
 }
+
+/* ── Auto-format helpers ────────────────────────────────
+   Case number: XX-XX-XXXXX...  (dashes auto-inserted after positions 2 and 4)
+   Phone:       (XXX) XXX-XXXX
+   Both preserve cursor position so editing in the middle works naturally. */
+function fmtCaseNo(v){
+  const clean=v.replace(/-/g,'').toUpperCase();
+  let out='';
+  for(let i=0;i<clean.length;i++){
+    if(i===2||i===4||i===6)out+='-';
+    out+=clean[i];
+  }
+  return out;
+}
+function fmtPhone(v){
+  const d=v.replace(/\D/g,'').slice(0,10);
+  if(!d)return '';
+  if(d.length<=3)return `(${d}`;
+  if(d.length<=6)return `(${d.slice(0,3)}) ${d.slice(3)}`;
+  return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
+}
+function fmtFine(v){
+  const d=v.replace(/[^\d]/g,'');
+  if(!d)return '';
+  return '$'+parseInt(d,10).toLocaleString('en-US');
+}
+function applyFmt(input,formatter,stateKey){
+  const oldVal=input.value;
+  const oldPos=input.selectionStart||0;
+  const charsBefore=oldVal.slice(0,oldPos).replace(/[^A-Za-z0-9]/g,'').length;
+  const formatted=formatter(oldVal);
+  let newPos=formatted.length, counted=0;
+  for(let i=0;i<formatted.length;i++){
+    if(/[A-Za-z0-9]/.test(formatted[i]))counted++;
+    if(counted===charsBefore){newPos=i+1;break}
+  }
+  input.value=formatted;
+  try{input.setSelectionRange(newPos,newPos)}catch(e){}
+  S[stateKey]=formatted;
+}
+function onCaseNoInput(input){applyFmt(input,fmtCaseNo,'caseNumber')}
+function onPhoneInput(input){applyFmt(input,fmtPhone,'clientPhone')}
+function onFineInput(input){applyFmt(input,fmtFine,'maxFine')}
 
 function showPreview(){
   syncFields();
@@ -1160,15 +1210,27 @@ function buildPmPV(){
   <div style="padding-left:0.5in;white-space:pre-wrap;line-height:1.4">${S.terms||ph('[Enter terms in form]')}</div>
 </div>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;column-gap:0.5in;margin-top:3em">
-  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Prosecutor</div></div>
-  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div></div>
+<div style="display:flex;gap:0.5in;margin-top:2.4em">
+  <div style="flex:1"><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Prosecutor</div></div>
+  <div style="flex:1"><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
+</div>
 
-  <div></div>
-  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">${attyNameLine}<br>Attorney for Defendant</div></div>
+<div style="display:flex;gap:0.5in;margin-top:0.5em">
+  <div style="flex:1">
+    <div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label"><strong>Defendant</strong></div>
+    ${(S.clientStreet||S.clientCityStateZip||S.clientPhone||S.clientEmail)?`<div style="margin-top:0.3em;line-height:1.15">${[esc(S.clientStreet),esc(S.clientCityStateZip),esc(S.clientPhone),esc(S.clientEmail)].filter(x=>x).join('<br>')}</div>`:''}
+  </div>
+  <div style="flex:1"><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
+</div>
 
-  <div style="margin-top:1.5em;align-self:end">Dated this ${pd.day} day of ${pd.month}, 202${pd.yr}</div>
-  <div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div></div>
+<div style="display:flex;gap:0.5in;margin-top:0.5em">
+  <div style="flex:1"><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">${attyNameLine}<br>Attorney for Defendant</div></div>
+  <div style="flex:1"><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
+</div>
+
+<div style="display:flex;gap:0.5in;margin-top:0.5em">
+  <div style="flex:1"><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div></div>
+  <div style="flex:1"><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
 </div>`;
 }
 
@@ -1224,14 +1286,17 @@ function buildMainPV(){
     pHtml=`<div class="p-count">${ph('[Select plea counts above]')}</div>`;
   }
   const pleaLbls2=pleaLblList.join(' and ');
+  const pleaLbls2Html=pleaLblList.length
+    ?pleaLblList.map(l=>`<strong>${l}</strong>`).join(' and ')
+    :'';
 
   /* ── paragraph 3 ── */
   let para3body='';
   if(isDwi){
-    para3body=`I am pleading guilty to ${pleaLbls2||ph('[COUNT]')} because of the following: ${S.facts||ph('[Enter facts in form]')}`;
+    para3body=`I am pleading guilty to ${pleaLbls2Html||ph('[COUNT]')} because of the following: ${S.facts||ph('[Enter facts in form]')}`;
   }else{
     const od=S.offDate?fmtShort(S.offDate):'[DATE]';
-    para3body=`I am pleading guilty to ${pleaLbls2||ph('[COUNT]')} because on or about <strong>${od}</strong>, within the city of <strong>${S.offCity||'[CITY]'}</strong>, <strong>${S.offCounty||'[COUNTY]'}</strong> County, State of <strong>Minnesota</strong>, I did the following:<div class="p-count" style="white-space:pre-wrap">${S.facts||ph('[Enter facts in form]')}</div>`;
+    para3body=`I am pleading guilty to ${pleaLbls2Html||ph('[COUNT]')} because on or about <strong>${od}</strong>, within the city of <strong>${S.offCity||'[CITY]'}</strong>, <strong>${S.offCounty||'[COUNTY]'}</strong> County, State of <strong>Minnesota</strong>, I did the following:<div class="p-count" style="white-space:pre-wrap">${S.facts||ph('[Enter facts in form]')}</div>`;
   }
 
   /* ── attorney details ── */
@@ -1243,17 +1308,61 @@ function buildMainPV(){
   /* ── paragraph 11 (DWI only) ── */
   const p11=isDwi?`<div class="p-para"><span class="p-pn">11.</span><span class="p-pb">Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</span></div>`:'';
 
-  /* ── defendant signature block (DWI stacked, Standard side-by-side) ── */
-  const defSig=isDwi
-    ?`<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div>
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>`
-    :`<div style="display:flex;gap:0.5in;margin-top:1.5em">
-<div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Defendant</div></div>
-<div><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
+  /* ── defendant signature block: sig line + date sig line side-by-side,
+     plus optional client street / city-state-zip / phone / email below ── */
+  const clientInfoLines=[];
+  if(S.clientStreet)clientInfoLines.push(esc(S.clientStreet));
+  if(S.clientCityStateZip)clientInfoLines.push(esc(S.clientCityStateZip));
+  if(S.clientPhone)clientInfoLines.push(esc(S.clientPhone));
+  if(S.clientEmail)clientInfoLines.push(esc(S.clientEmail));
+  const clientInfoBlock=clientInfoLines.length
+    ?`<div style="margin-top:0.3em;line-height:1.15">${clientInfoLines.join('<br>')}</div>`
+    :'';
+
+  const defSig=`<div style="display:flex;gap:0.5in;margin-top:0.5em">
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label"><strong>Defendant</strong></div>
+  ${clientInfoBlock}
+</div>
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Date</div>
+</div>
 </div>`;
 
   /* ── prosecutor label: "Prosecutor" for DWI, "Prosecuting Attorney" for Standard ── */
   const prosLabel=isDwi?'Prosecutor':'Prosecuting Attorney';
+
+  /* ── attorney sig row: sig line + name/address on left, date on right ── */
+  const attyRow=`<div style="display:flex;gap:0.5in;margin-top:0.5em">
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-atty-info">${attyLine1}<br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax${attyEmail}</div>
+</div>
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Date</div>
+</div>
+</div>`;
+
+  /* ── prosecutor and judge: sig line + date side-by-side ── */
+  const sigRow=(label)=>`<div style="display:flex;gap:0.5in;margin-top:0.5em">
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">${label}</div>
+</div>
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Date</div>
+</div>
+</div>`;
 
   return `
 <div class="p-hdr-row"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div>
@@ -1314,15 +1423,11 @@ ${defSig}
 
 <div class="p-atty-stmt"><strong>${attyDisplayName}</strong> states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div>
 
-<div class="p-sig-space"></div><div class="p-sig-line"></div>
-<div class="p-atty-info">${attyLine1}<br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax${attyEmail}</div>
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
+${attyRow}
 
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">${prosLabel}</div>
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>
+${sigRow(prosLabel)}
 
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Judge of District Court</div>
-<div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div>`;
+${sigRow('Judge of District Court')}`;
 }
 
 /* ═══════════════════════════════════════════════════════
