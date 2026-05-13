@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0071)file:///C:/Users/gerar/Downloads/DWI%20Plea%20Petition%20Generator.html -->
+<!-- saved from url=(0074)file:///C:/Users/gerar/Downloads/DWI%20Plea%20Petition%20Generator_18.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DWI Plea Petition Generator — Gerald Miller P.A.</title>
-<link href="./Plea Gen_files/css2" rel="stylesheet">
+<link href="./INDENT_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -151,7 +151,7 @@ textarea{resize:vertical;line-height:1.55}
 .p-cap{width:100%;border-collapse:collapse;margin:0.4em 0;font-family:inherit;font-size:inherit;line-height:1.15}
 .p-cap td{vertical-align:top;padding:0}
 .p-cap-gap{height:0.9em}
-.p-cap-indent{padding-left:1.5in}
+.p-cap td.p-cap-indent{padding-left:1.25in}
 
 /* Numbered paragraphs: hanging indent with 0.5in number column */
 .p-para{display:flex;margin-bottom:1em;line-height:1.15}
@@ -201,7 +201,7 @@ textarea{resize:vertical;line-height:1.55}
 <div class="app">
 
 <!-- ═══ FORM VIEW ═══ -->
-<div id="fv">
+<div id="fv" style="display: block;">
 
   <div style="text-align:center;padding:.5rem 0 .75rem">
     <span style="font-size:22px;font-weight:700;color:var(--navy);letter-spacing:-.01em">Plea Petition Generator</span>
@@ -418,7 +418,7 @@ textarea{resize:vertical;line-height:1.55}
 </div>
 
 <!-- ═══ PREVIEW VIEW ═══ -->
-<div id="pv">
+<div id="pv" style="display: none;">
   <div class="pv-bar">
     <button class="btn" onclick="showForm()">← Back to form</button>
     <button class="btn btn-navy" id="btn-drv" onclick="pushDrive()">Push to Google Drive</button>
@@ -429,7 +429,77 @@ textarea{resize:vertical;line-height:1.55}
     <span style="font-size:11px;color:var(--muted);margin-left:auto;font-style:italic">When printing: set Margins to "None"</span>
     <span id="drv-status"></span>
   </div>
-  <div id="petition-doc"></div>
+  <div id="petition-doc"><div class="page" data-page="1" data-of="3" contenteditable="true" spellcheck="true"><div class="p-hdr-row"><span>STATE OF MINNESOTA</span><span>DISTRICT COURT</span></div><div class="p-hdr-row"><span>COUNTY OF <span class="p-ph">[COUNTY]</span></span><span><span class="p-ph">[DISTRICT] JUDICIAL DISTRICT</span></span></div><hr class="p-rule"><table class="p-cap">
+  <tbody><tr>
+    <td style="width:50%">State of Minnesota,</td>
+    <td style="width:50%;white-space:nowrap">Case No. <span class="p-ph">[CASE NO]</span></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td class="p-cap-indent">Plaintiff,</td>
+    <td></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td>vs.</td>
+    <td style="font-weight:700">PETITION TO ENTER<br>PLEA OF GUILTY</td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td>Client Name,</td>
+    <td></td>
+  </tr>
+  <tr><td class="p-cap-gap">&nbsp;</td><td></td></tr>
+  <tr>
+    <td class="p-cap-indent">Defendant.</td>
+    <td></td>
+  </tr>
+</tbody></table><hr class="p-rule"><div class="p-para"><span class="p-pn">1.</span><span class="p-pb">I, Client Name, <strong>DOB <span class="p-ph">[DOB]</span></strong>, have reviewed the charges against me, and I understand them:<div class="p-count-i"><strong>Count 1:</strong> .</div></span></div><div class="p-para"><span class="p-pn">2.</span><span class="p-pb">I am pleading guilty to:<div class="p-count"><span class="p-ph">[Select plea counts above]</span></div></span></div><div class="p-para"><span class="p-pn">3.</span><span class="p-pb">I am pleading guilty to <span class="p-ph">[COUNT]</span> because of the following: <span class="p-ph">[Enter facts in form]</span></span></div><div class="p-para"><span class="p-pn">4.</span><span class="p-pb">I make no claim that I am innocent of the charge to which I am entering a plea of guilty.</span></div><div class="p-para"><span class="p-pn">5.</span><span class="p-pb">I understand that I was charged with a <strong>Misdemeanor</strong>, which carries a maximum sentence of a <strong>$1,000</strong> fine and/or <strong>90 days in jail.</strong></span></div><div class="p-para"><span class="p-pn">6.</span><span class="p-pb">I have fully discussed the charges, my constitutional rights, this petition, and any of the possible consequences that could happen if I were not a US citizen, with my attorney, <strong>Gerard W. Mannion</strong>.</span></div></div><div class="page" data-page="2" data-of="3" contenteditable="true" spellcheck="true"><div class="p-para"><span class="p-pn">7.</span><span class="p-pb">I understand that (under the original <strong>Misdemeanor</strong> charge level) I have the following constitutional rights; which I knowingly, voluntarily and intelligently waive (give up) by entering this plea of guilty:<div class="p-count"><div>a. the right to a trial to the court (judge only) or to a jury, in which I am presumed innocent until proven guilty beyond a reasonable doubt;</div><div style="margin-top:0.2em">b. the right to confront and cross-examine all witnesses against me;</div><div style="margin-top:0.2em">c. the right to remain silent or to testify for myself;</div><div style="margin-top:0.2em">d. the right to subpoena witnesses to appear on my behalf;</div><div style="margin-top:0.2em">e. the right to a pretrial hearing to contest the admissibility of evidence obtained from a search or seizure and/or information I offered to the police in the form of a written or oral statement.</div></div></span></div><div class="p-para"><span class="p-pn">8.</span><span class="p-pb">Understanding the above, I am entering my plea of guilty freely and voluntarily and without any promises except as noted in number 9 below.</span></div><div class="p-para"><span class="p-pn">9.</span><span class="p-pb">I am entering my plea of guilty based on the following sentencing agreement:<div class="p-count" style="font-style:italic;font-weight:700;text-decoration:underline"><span style="color:#9CA3AF;text-decoration:none;font-weight:400;font-style:normal"><span class="p-ph">[Enter sentencing agreement in form]</span></span></div></span></div><div class="p-para"><span class="p-pn">10.</span><span class="p-pb">I understand that if the court does not accept the agreement stated in number 9, I have the right to withdraw my plea of guilty and have a trial.</span></div><div class="p-para"><span class="p-pn">11.</span><span class="p-pb">Further, I also understand <u><strong>THE ENHANCEABILITY</strong></u> of this crime. I understand that any future Driving While Impaired offenses occurring in the next 10 years will be enhanced by this charge I am pleading guilty to today. In other words, any future offenses will carry more severe criminal and civil penalties; that two DWI's within ten years is a gross misdemeanor and carries mandatory minimum jail sentencing; that three DWI's within ten years is also a gross misdemeanor carrying even higher mandatory minimums; that four DWI's within ten years can result in a felony, and punishment may include imprisonment. I also understand that future offenses will include longer license revocation periods, license impoundment and possibly vehicle forfeiture and/or an alcohol restriction on my license.</span></div><div style="display:flex;gap:0.5in;margin-top:0.5em">
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label"><strong>Client Name</strong><br>Defendant</div>
+  
+</div>
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Date</div>
+</div>
+</div><div class="p-atty-stmt"><strong>Gerard W. Mannion</strong> states that he is the attorney for the defendant in the above criminal case; and that he has: 1) personally explained the contents of this petition to the defendant, 2) that to the best of his knowledge the defendant's constitutional rights have not been violated and no meritorious defense exists to the charges to which defendant is pleading guilty</div></div><div class="page" data-page="3" data-of="3" contenteditable="true" spellcheck="true"><div style="display:flex;gap:0.5in;margin-top:0.5em">
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-atty-info"><strong>Gerard W. Mannion</strong> (404006)<br>Gerald Miller, P.A.<br>2915 Wayzata Boulevard South<br>Minneapolis, MN 55405<br>(612) 341-9080 Phone<br>(612) 341-9079 Fax<br>gmannion@geraldmiller.com</div>
+</div>
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Date</div>
+</div>
+</div><div style="display:flex;gap:0.5in;margin-top:0.5em">
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Prosecutor</div>
+</div>
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Date</div>
+</div>
+</div><div style="display:flex;gap:0.5in;margin-top:0.5em">
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Judge of District Court</div>
+</div>
+<div style="flex:1">
+  <div class="p-sig-space"></div>
+  <div class="p-sig-line"></div>
+  <div class="p-sig-label">Date</div>
+</div>
+</div></div></div>
 </div>
 
 </div><!-- .app -->
@@ -1217,7 +1287,7 @@ function buildPmPV(){
 
 <div style="display:flex;gap:0.5in;margin-top:0.5em">
   <div style="flex:1">
-    <div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label"><strong>Defendant</strong></div>
+    <div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label"><strong>${nm}</strong><br>Defendant</div>
     ${(S.clientStreet||S.clientCityStateZip||S.clientPhone||S.clientEmail)?`<div style="margin-top:0.3em;line-height:1.15">${[esc(S.clientStreet),esc(S.clientCityStateZip),esc(S.clientPhone),esc(S.clientEmail)].filter(x=>x).join('<br>')}</div>`:''}
   </div>
   <div style="flex:1"><div class="p-sig-space"></div><div class="p-sig-line"></div><div class="p-sig-label">Date</div></div>
@@ -1323,7 +1393,7 @@ function buildMainPV(){
 <div style="flex:1">
   <div class="p-sig-space"></div>
   <div class="p-sig-line"></div>
-  <div class="p-sig-label"><strong>Defendant</strong></div>
+  <div class="p-sig-label"><strong>${nm}</strong><br>Defendant</div>
   ${clientInfoBlock}
 </div>
 <div style="flex:1">
